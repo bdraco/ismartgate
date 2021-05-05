@@ -8,24 +8,78 @@ iSmartGate and GogoGate2 API
 
 ---
 
-## Features
+## About
 
--   Store values and retain the prior value in memory
--   ... some other functionality
-
-## Quick Start
-
-```python
-from ismartgate import Example
-
-a = Example()
-a.get_value()  # 10
-```
+This is a fork of vangorra's excellent `python_gogogate2_api` library from https://github.com/vangorra/python_gogogate2_api
 
 ## Installation
 
 **Stable Release:** `pip install ismartgate`<br>
 **Development Head:** `pip install git+https://github.com/bdraco/ismartgate.git`
+
+## Usage in Commands
+```shell script
+$ gogogate2 --help
+Usage: gogogate2 [OPTIONS] COMMAND [ARGS]...
+
+  Interact with the device API.
+
+Options:
+  --host TEXT      [required]
+  --username TEXT  [required]
+  --password TEXT  Omit for interactive prompt. Use '-' to read from stdin.
+  --version        Show the version and exit.
+  --help           Show this message and exit.
+
+Commands:
+  close  Close the door.
+  info   Get info from device.
+  open   Open the door.
+
+
+$ ismartgate --help
+Usage: ismartgate [OPTIONS] COMMAND [ARGS]...
+
+  Interact with the device API.
+
+Options:
+  --host TEXT      [required]
+  --username TEXT  [required]
+  --password TEXT  Omit for interactive prompt. Use '-' to read from stdin.
+  --version        Show the version and exit.
+  --help           Show this message and exit.
+
+Commands:
+  close  Close the door.
+  info   Get info from device.
+  open   Open the door.
+```
+
+## Usage in Code
+```python
+from ismartgate import GogoGate2Api, ISmartGateApi
+
+# GogoGate2 API
+gogogate2_api = GogoGate2Api("10.10.0.23", "admin", "password")
+
+# Get info about device and all doors.
+await gogogate2_api.async_info()
+
+# Open/close door.
+await gogogate2_api.async_open_door(1)
+await gogogate2_api.async_close_door(1)
+
+
+# iSmartGate API
+ismartgate_api = ISmartGateApi("10.10.0.24", "admin", "password")
+
+# Get info about device and all doors.
+await ismartgate_api.async_info()
+
+# Open/close door.
+await ismartgate_api.async_open_door(1)
+await ismartgate_api.async_close_door(1)
+```
 
 ## Documentation
 
