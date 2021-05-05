@@ -14,7 +14,8 @@ This is a fork of vangorra's excellent `python_gogogate2_api` library from https
 
 ## Installation
 
-    pip install gogogate2-api
+**Stable Release:** `pip install ismartgate`<br>
+**Development Head:** `pip install git+https://github.com/bdraco/ismartgate.git`
 
 ## Usage in Commands
 ```shell script
@@ -56,7 +57,7 @@ Commands:
 
 ## Usage in Code
 ```python
-from gogogate2_api import GogoGate2Api, ISmartGateApi
+from ismartgate import GogoGate2Api, ISmartGateApi
 
 # GogoGate2 API
 gogogate2_api = GogoGate2Api("10.10.0.23", "admin", "password")
@@ -79,11 +80,6 @@ await ismartgate_api.async_info()
 await ismartgate_api.async_open_door(1)
 await ismartgate_api.async_close_door(1)
 ```
-
-## Installation
-
-**Stable Release:** `pip install ismartgate`<br>
-**Development Head:** `pip install git+https://github.com/bdraco/ismartgate.git`
 
 ## Documentation
 
