@@ -1,14 +1,17 @@
 """CLI for GogoGate2 and iSmartGate devices."""
-from dataclasses import dataclass
-from enum import Enum
 import json
 import sys
+from dataclasses import dataclass
+from enum import Enum
 from typing import Callable
 
+import pytest
 from asynctest import MagicMock, Mock, patch
 from click.testing import CliRunner
-from ismartgate import GogoGate2Api, ISmartGateApi
+from typing_extensions import Final
+
 import ismartgate.cli as cli_module
+from ismartgate import GogoGate2Api, ISmartGateApi
 from ismartgate.cli import (
     Command,
     DeviceType,
@@ -17,8 +20,6 @@ from ismartgate.cli import (
     gogogate2_cli,
     ismartgate_cli,
 )
-import pytest
-from typing_extensions import Final
 
 
 class StubbedTypeEnum(Enum):

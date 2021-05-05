@@ -1,12 +1,12 @@
 """Base package for gate API code."""
 import abc
 import base64
-from datetime import datetime, timedelta
-from hashlib import sha1
 import json
 import secrets
-from typing import Dict, Generic, Optional, TypeVar, Union, cast
 import uuid
+from datetime import datetime, timedelta
+from hashlib import sha1
+from typing import Dict, Generic, Optional, TypeVar, Union, cast
 from xml.etree.ElementTree import Element  # nosec
 
 from Crypto.Cipher import AES  # nosec
@@ -111,9 +111,9 @@ class ISmartGateApiCipher(ApiCipher):
         self._password: Final = password
 
         # Calculate the token.
-        raw_token: Final[
-            str
-        ] = ISmartGateApiCipher.RAW_TOKEN_FORMAT % self._username.lower()
+        raw_token: Final[str] = (
+            ISmartGateApiCipher.RAW_TOKEN_FORMAT % self._username.lower()
+        )
         self._token: Final = sha1(raw_token.encode("utf-8")).hexdigest()  # nosec
 
         # Calculate the key and pass it onto the superclass.
@@ -305,8 +305,16 @@ class AbstractGateApi(
             info, use_transitional_status=consider_transitional_states
         )
         current_door_status: Final = statuses.get(door_id)
-        result_door_statuses: Final = OPEN_DOOR_STATUSES if target_door_status == DoorStatus.OPENED else CLOSE_DOOR_STATUSES
-        transitional_door_status: Final = TransitionDoorStatus.OPENING if target_door_status == DoorStatus.OPENED else TransitionDoorStatus.CLOSING
+        result_door_statuses: Final = (
+            OPEN_DOOR_STATUSES
+            if target_door_status == DoorStatus.OPENED
+            else CLOSE_DOOR_STATUSES
+        )
+        transitional_door_status: Final = (
+            TransitionDoorStatus.OPENING
+            if target_door_status == DoorStatus.OPENED
+            else TransitionDoorStatus.CLOSING
+        )
 
         # Door is invalid, not configured, already in desired state or transitioning to it.
         if not current_door_status or current_door_status in result_door_statuses:
@@ -356,9 +364,10 @@ class AbstractGateApi(
         doors: Final = get_configured_doors(info)
 
         # Clean out the cache.
-        for (cached_door_id, cached_transitional_status,) in list(
-            self._transition_door_status.items()
-        ):
+        for (
+            cached_door_id,
+            cached_transitional_status,
+        ) in list(self._transition_door_status.items()):
             if (
                 datetime.utcnow() - cached_transitional_status.activated
                 >= self._transition_status_timeout

@@ -1,5 +1,8 @@
 """Tests for common code."""
+import pytest
 from defusedxml import ElementTree
+from typing_extensions import Final
+
 from ismartgate.common import (
     DoorMode,
     DoorStatus,
@@ -18,8 +21,6 @@ from ismartgate.common import (
     int_or_raise,
     str_or_raise,
 )
-import pytest
-from typing_extensions import Final
 
 
 def test_element_exceptions() -> None:

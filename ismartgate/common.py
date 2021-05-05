@@ -1,9 +1,9 @@
 """Common code for gate APIs."""
 import dataclasses
+import json
 from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
-import json
 from typing import Any, Callable, Optional, Tuple, Type, TypeVar, Union, cast
 from xml.etree.ElementTree import Element  # nosec
 
@@ -401,7 +401,9 @@ def wifi_or_raise(element: Element) -> Wifi:
 
 def network_or_raise(element: Element) -> Network:
     """Get network from xml element."""
-    return Network(ip=element_text_or_raise(element, "ip"),)
+    return Network(
+        ip=element_text_or_raise(element, "ip"),
+    )
 
 
 def outputs_or_raise(element: Element) -> Outputs:
