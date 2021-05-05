@@ -6,8 +6,8 @@ from urllib.parse import parse_qs
 from xml.dom.minidom import parseString
 
 import dicttoxml
-from gogogate2_api import AbstractGateApi, ISmartGateApiCipher
-from gogogate2_api.common import (
+from ismartgate import AbstractGateApi, ISmartGateApiCipher
+from ismartgate.common import (
     DoorMode,
     DoorStatus,
     EnhancedJSONEncoder,
@@ -20,7 +20,7 @@ from gogogate2_api.common import (
     RequestOption,
     Wifi,
 )
-from gogogate2_api.const import NONE_INT, GogoGate2ApiErrorCode, ISmartGateApiErrorCode
+from ismartgate.const import NONE_INT, GogoGate2ApiErrorCode, ISmartGateApiErrorCode
 from httpx import Request, Response
 import respx
 from typing_extensions import Final

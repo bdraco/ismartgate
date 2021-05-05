@@ -3,21 +3,21 @@ from datetime import datetime
 from typing import Callable, Union
 from unittest.mock import patch
 
-from gogogate2_api import (
+from ismartgate import (
     AbstractGateApi,
     GogoGate2Api,
     GogoGate2ApiCipher,
     ISmartGateApi,
     ISmartGateApiCipher,
 )
-from gogogate2_api.common import (
+from ismartgate.common import (
     ApiError,
     DoorStatus,
     InvalidDoorException,
     TransitionDoorStatus,
     get_door_by_id,
 )
-from gogogate2_api.const import GogoGate2ApiErrorCode, ISmartGateApiErrorCode
+from ismartgate.const import GogoGate2ApiErrorCode, ISmartGateApiErrorCode
 import httpx
 import pytest
 import respx
@@ -312,7 +312,7 @@ async def test_transitional_door_statuses(
     api_generator: ApiGenerator, server_generator: ServerGenerator
 ) -> None:
     """Test open and close door."""
-    with patch("gogogate2_api.datetime") as datetime_mock:
+    with patch("ismartgate.datetime") as datetime_mock:
         api: Final = api_generator("device1", "fakeuser", "fakepassword")
         mock_server: Final = server_generator(api)
 

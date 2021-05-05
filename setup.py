@@ -13,6 +13,10 @@ setup_requirements = [
 ]
 
 test_requirements = [
+    "typing_extensions>=3.10.0.0",
+    "asynctest>=0.13.0",
+    "respx>=0.17.0",
+    "pytest-asyncio",
     "black>=19.10b0",
     "codecov>=2.1.4",
     "flake8>=3.8.3",
@@ -37,7 +41,12 @@ dev_requirements = [
     "wheel>=0.34.2",
 ]
 
-requirements = []
+requirements = [
+    "dicttoxml>=1.7.4",
+    "defusedxml>=0.7.1",
+    "pycryptodome>=3.9.8",
+    "httpx>=0.18.0",
+]
 
 extra_requirements = {
     "setup": setup_requirements,
@@ -46,7 +55,7 @@ extra_requirements = {
     "all": [
         *requirements,
         *dev_requirements,
-    ]
+    ],
 }
 
 setup(

@@ -7,9 +7,9 @@ from typing import Callable
 
 from asynctest import MagicMock, Mock, patch
 from click.testing import CliRunner
-from gogogate2_api import GogoGate2Api, ISmartGateApi
-import gogogate2_api.cli as cli_module
-from gogogate2_api.cli import (
+from ismartgate import GogoGate2Api, ISmartGateApi
+import ismartgate.cli as cli_module
+from ismartgate.cli import (
     Command,
     DeviceType,
     Option,
@@ -36,7 +36,7 @@ class StubbedClassData:
     type: StubbedTypeEnum
 
 
-@patch("gogogate2_api.cli.GogoGate2Api")
+@patch("ismartgate.cli.GogoGate2Api")
 def test_info(class_mock: Mock) -> None:
     """Test get device info."""
     api: Final = MagicMock(spec=GogoGate2Api)
@@ -71,8 +71,8 @@ def test_info(class_mock: Mock) -> None:
     )
 
 
-@patch("gogogate2_api.cli.GogoGate2Api")
-@patch("gogogate2_api.cli.getpass")
+@patch("ismartgate.cli.GogoGate2Api")
+@patch("ismartgate.cli.getpass")
 def test_open_with_stdin_password(getpass: Mock, class_mock: Mock) -> None:
     """Test open door."""
     api: Final = MagicMock(spec=GogoGate2Api)
@@ -101,8 +101,8 @@ def test_open_with_stdin_password(getpass: Mock, class_mock: Mock) -> None:
     assert json.loads(result.output) is True
 
 
-@patch("gogogate2_api.cli.ISmartGateApi")
-@patch("gogogate2_api.cli.getpass")
+@patch("ismartgate.cli.ISmartGateApi")
+@patch("ismartgate.cli.getpass")
 def test_close_without_password_option(getpass: Mock, class_mock: Mock) -> None:
     """Test close door."""
     api: Final = MagicMock(spec=ISmartGateApi)
