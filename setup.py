@@ -73,10 +73,10 @@ setup(
     description="iSmartGate and GogoGate2 API",
     entry_points={
         "console_scripts": [
-            "ismartgate=ismartgate.cli:main",
-            "gogogate2=ismartgate.cli:main"            
+            "ismartgate=ismartgate.cli:ismartgate_cli",
+            "gogogate2=ismartgate.cli:gogogate2_cli",
         ],
-    },    
+    },
     install_requires=requirements,
     license="MIT license",
     long_description=readme,
