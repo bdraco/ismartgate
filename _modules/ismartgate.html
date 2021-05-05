@@ -1,0 +1,769 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>ismartgate &mdash; ismartgate 0.9.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ismartgate
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#stable-release">Stable release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#from-sources">From sources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Package modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ismartgate.html">ismartgate package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ismartgate.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ismartgate.html#module-ismartgate.cli">ismartgate.cli module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ismartgate.html#module-ismartgate.common">ismartgate.common module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ismartgate.html#module-ismartgate.const">ismartgate.const module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ismartgate.html#module-ismartgate">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#deploying">Deploying</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ismartgate</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>ismartgate</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for ismartgate</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Base package for gate API code.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">abc</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">secrets</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">sha1</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span> <span class="nn">xml.etree.ElementTree</span> <span class="kn">import</span> <span class="n">Element</span>  <span class="c1"># nosec</span>
+
+<span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">AES</span>  <span class="c1"># nosec</span>
+<span class="kn">from</span> <span class="nn">Crypto.Cipher._mode_cbc</span> <span class="kn">import</span> <span class="n">CbcMode</span>  <span class="c1"># nosec</span>
+<span class="kn">from</span> <span class="nn">defusedxml</span> <span class="kn">import</span> <span class="n">ElementTree</span>
+<span class="kn">from</span> <span class="nn">httpx</span> <span class="kn">import</span> <span class="n">AsyncClient</span>
+<span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Final</span>
+
+<span class="kn">from</span> <span class="nn">.common</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CLOSE_DOOR_STATUSES</span><span class="p">,</span>
+    <span class="n">OPEN_DOOR_STATUSES</span><span class="p">,</span>
+    <span class="n">AllDoorStatus</span><span class="p">,</span>
+    <span class="n">ApiError</span><span class="p">,</span>
+    <span class="n">CachedTransitionDoorStatus</span><span class="p">,</span>
+    <span class="n">CredentialsIncorrectException</span><span class="p">,</span>
+    <span class="n">CredentialsNotSetException</span><span class="p">,</span>
+    <span class="n">DoorNotSetException</span><span class="p">,</span>
+    <span class="n">DoorStatus</span><span class="p">,</span>
+    <span class="n">ExceptionGenerator</span><span class="p">,</span>
+    <span class="n">GogoGate2ActivateResponse</span><span class="p">,</span>
+    <span class="n">GogoGate2InfoResponse</span><span class="p">,</span>
+    <span class="n">InvalidApiCodeException</span><span class="p">,</span>
+    <span class="n">InvalidDoorException</span><span class="p">,</span>
+    <span class="n">InvalidOptionException</span><span class="p">,</span>
+    <span class="n">ISmartGateActivateResponse</span><span class="p">,</span>
+    <span class="n">ISmartGateDoor</span><span class="p">,</span>
+    <span class="n">ISmartGateInfoResponse</span><span class="p">,</span>
+    <span class="n">RequestOption</span><span class="p">,</span>
+    <span class="n">TransitionDoorStatus</span><span class="p">,</span>
+    <span class="n">element_to_api_error</span><span class="p">,</span>
+    <span class="n">element_to_gogogate2_activate_response</span><span class="p">,</span>
+    <span class="n">element_to_gogogate2_info_response</span><span class="p">,</span>
+    <span class="n">element_to_ismartgate_activate_response</span><span class="p">,</span>
+    <span class="n">element_to_ismartgate_info_response</span><span class="p">,</span>
+    <span class="n">get_configured_doors</span><span class="p">,</span>
+    <span class="n">get_door_by_id</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.const</span> <span class="kn">import</span> <span class="n">GogoGate2ApiErrorCode</span><span class="p">,</span> <span class="n">ISmartGateApiErrorCode</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;J. Nick Koston&quot;</span>
+<span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;nick@koston.org&quot;</span>
+<span class="c1"># Do not edit this string manually, always use bumpversion</span>
+<span class="c1"># Details in CONTRIBUTING.md</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;0.9.0&quot;</span>
+
+
+<div class="viewcode-block" id="get_module_version"><a class="viewcode-back" href="../ismartgate.html#ismartgate.get_module_version">[docs]</a><span class="k">def</span> <span class="nf">get_module_version</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">__version__</span></div>
+
+
+<div class="viewcode-block" id="ApiCipher"><a class="viewcode-back" href="../ismartgate.html#ismartgate.ApiCipher">[docs]</a><span class="k">class</span> <span class="nc">ApiCipher</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;AES/CBC/PKCS5Padding algorithm.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Initialize the object.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">key</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_key_bytes</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ApiCipher.encrypt"><a class="viewcode-back" href="../ismartgate.html#ismartgate.ApiCipher.encrypt">[docs]</a>    <span class="k">def</span> <span class="nf">encrypt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">init_vector</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Encrypt content.&quot;&quot;&quot;</span>
+        <span class="n">init_vector_bytes</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">ApiCipher</span><span class="o">.</span><span class="n">pad_pkcs5</span><span class="p">(</span>
+            <span class="n">init_vector</span> <span class="ow">or</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)[:</span> <span class="n">AES</span><span class="o">.</span><span class="n">block_size</span><span class="p">]</span>
+        <span class="n">content_bytes</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">ISmartGateApiCipher</span><span class="o">.</span><span class="n">pad_pkcs5</span><span class="p">(</span><span class="n">content</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+        <span class="n">cipher</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
+            <span class="n">CbcMode</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_key_bytes</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">MODE_CBC</span><span class="p">,</span> <span class="n">init_vector_bytes</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">encrypted_bytes</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">content_bytes</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">init_vector_bytes</span> <span class="o">+</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">encrypted_bytes</span><span class="p">),</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ApiCipher.decrypt"><a class="viewcode-back" href="../ismartgate.html#ismartgate.ApiCipher.decrypt">[docs]</a>    <span class="k">def</span> <span class="nf">decrypt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Decrypt content.&quot;&quot;&quot;</span>
+        <span class="n">init_vector</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)[:</span> <span class="n">AES</span><span class="o">.</span><span class="n">block_size</span><span class="p">]</span>
+        <span class="n">encrypted_bytes</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">AES</span><span class="o">.</span><span class="n">block_size</span> <span class="p">:])</span>
+        <span class="n">cipher</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
+            <span class="n">CbcMode</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_key_bytes</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">MODE_CBC</span><span class="p">,</span> <span class="n">init_vector</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">ApiCipher</span><span class="o">.</span><span class="n">unpad_pkcs5</span><span class="p">(</span><span class="n">cipher</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">encrypted_bytes</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ApiCipher.pad_pkcs5"><a class="viewcode-back" href="../ismartgate.html#ismartgate.ApiCipher.pad_pkcs5">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">pad_pkcs5</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Add padding to bytes.&quot;&quot;&quot;</span>
+        <span class="n">block_size</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">AES</span><span class="o">.</span><span class="n">block_size</span>
+        <span class="k">return</span> <span class="n">data</span> <span class="o">+</span> <span class="p">(</span><span class="n">block_size</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">%</span> <span class="n">block_size</span><span class="p">)</span> <span class="o">*</span> <span class="nb">chr</span><span class="p">(</span>
+            <span class="n">block_size</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">%</span> <span class="n">block_size</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="ApiCipher.unpad_pkcs5"><a class="viewcode-back" href="../ismartgate.html#ismartgate.ApiCipher.unpad_pkcs5">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">unpad_pkcs5</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Remove padding from bytes.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span> <span class="p">:</span> <span class="o">-</span><span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span></div></div>
+
+
+<div class="viewcode-block" id="GogoGate2ApiCipher"><a class="viewcode-back" href="../ismartgate.html#ismartgate.GogoGate2ApiCipher">[docs]</a><span class="k">class</span> <span class="nc">GogoGate2ApiCipher</span><span class="p">(</span><span class="n">ApiCipher</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Cipher for GogoGate2 devices.&quot;&quot;&quot;</span>
+
+    <span class="n">SHARED_SECRET</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="s2">&quot;0e3b7</span><span class="si">%i</span><span class="s2">1X9@54cAf&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Initialize the object.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">GogoGate2ApiCipher</span><span class="o">.</span><span class="n">SHARED_SECRET</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ISmartGateApiCipher"><a class="viewcode-back" href="../ismartgate.html#ismartgate.ISmartGateApiCipher">[docs]</a><span class="k">class</span> <span class="nc">ISmartGateApiCipher</span><span class="p">(</span><span class="n">ApiCipher</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Cipher for iSmartGate devices.&quot;&quot;&quot;</span>
+
+    <span class="n">RAW_TOKEN_FORMAT</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">@ismartgate&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Initialize the object.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_username</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">username</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_password</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">password</span>
+
+        <span class="c1"># Calculate the token.</span>
+        <span class="n">raw_token</span><span class="p">:</span> <span class="n">Final</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">ISmartGateApiCipher</span><span class="o">.</span><span class="n">RAW_TOKEN_FORMAT</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_username</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_token</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">sha1</span><span class="p">(</span><span class="n">raw_token</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>  <span class="c1"># nosec</span>
+
+        <span class="c1"># Calculate the key and pass it onto the superclass.</span>
+        <span class="n">sha1_hex_str</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">sha1</span><span class="p">(</span>  <span class="c1"># nosec</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_username</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_password</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sha1_hex_str</span><span class="p">[</span><span class="mi">32</span><span class="p">:</span><span class="mi">36</span><span class="p">]</span><span class="si">}</span><span class="s2">a</span><span class="si">{</span><span class="n">sha1_hex_str</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">!</span><span class="si">{</span><span class="n">sha1_hex_str</span><span class="p">[</span><span class="mi">18</span><span class="p">:</span><span class="mi">21</span><span class="p">]</span><span class="si">}</span><span class="s2">*#</span><span class="si">{</span><span class="n">sha1_hex_str</span><span class="p">[</span><span class="mi">24</span><span class="p">:</span><span class="mi">26</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">token</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get the token.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_token</span></div>
+
+
+<span class="n">ApiCipherType</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span>
+    <span class="s2">&quot;ApiCipherType&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="n">Union</span><span class="p">[</span><span class="n">GogoGate2ApiCipher</span><span class="p">,</span> <span class="n">ISmartGateApiCipher</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">InfoResponseType</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span>
+    <span class="s2">&quot;InfoResponseType&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="n">Union</span><span class="p">[</span><span class="n">GogoGate2InfoResponse</span><span class="p">,</span> <span class="n">ISmartGateInfoResponse</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">ActivateResponseType</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span>
+    <span class="s2">&quot;ActivateResponseType&quot;</span><span class="p">,</span>
+    <span class="n">bound</span><span class="o">=</span><span class="n">Union</span><span class="p">[</span><span class="n">GogoGate2ActivateResponse</span><span class="p">,</span> <span class="n">ISmartGateActivateResponse</span><span class="p">],</span>
+<span class="p">)</span>
+
+
+<span class="c1"># pylint: disable=too-many-instance-attributes</span>
+<div class="viewcode-block" id="AbstractGateApi"><a class="viewcode-back" href="../ismartgate.html#ismartgate.AbstractGateApi">[docs]</a><span class="k">class</span> <span class="nc">AbstractGateApi</span><span class="p">(</span>
+    <span class="n">Generic</span><span class="p">[</span><span class="n">ApiCipherType</span><span class="p">,</span> <span class="n">InfoResponseType</span><span class="p">,</span> <span class="n">ActivateResponseType</span><span class="p">],</span> <span class="n">abc</span><span class="o">.</span><span class="n">ABC</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;API capable of communicating with a gogogate2 devices.&quot;&quot;&quot;</span>
+
+    <span class="n">API_URL_TEMPLATE</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="s2">&quot;http://</span><span class="si">%s</span><span class="s2">/api.php&quot;</span>
+    <span class="n">DEFAULT_REQUEST_TIMEOUT</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">DEFAULT_TRANSITION_STATUS_TIMEOUT</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">55</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">host</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">api_cipher</span><span class="p">:</span> <span class="n">ApiCipherType</span><span class="p">,</span>
+        <span class="n">request_timeout</span><span class="p">:</span> <span class="n">timedelta</span> <span class="o">=</span> <span class="n">DEFAULT_REQUEST_TIMEOUT</span><span class="p">,</span>
+        <span class="n">transition_status_timeout</span><span class="p">:</span> <span class="n">timedelta</span> <span class="o">=</span> <span class="n">DEFAULT_TRANSITION_STATUS_TIMEOUT</span><span class="p">,</span>
+        <span class="n">httpx_async_client</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">AsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Initialize the object.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_host</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">host</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_username</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">username</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_password</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">password</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cipher</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">api_cipher</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_request_timeout</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">request_timeout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_transition_status_timeout</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">transition_status_timeout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_api_url</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">AbstractGateApi</span><span class="o">.</span><span class="n">API_URL_TEMPLATE</span> <span class="o">%</span> <span class="n">host</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_transition_door_status</span><span class="p">:</span> <span class="n">Final</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">CachedTransitionDoorStatus</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_httpx_async_client</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">httpx_async_client</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">host</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get the host.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_host</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">username</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get the username.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_username</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">password</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get the password.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_password</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cipher</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApiCipherType</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get the cipher.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cipher</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_async_request</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">option</span><span class="p">:</span> <span class="n">RequestOption</span><span class="p">,</span>
+        <span class="n">arg1</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">arg2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Element</span><span class="p">:</span>
+        <span class="n">command_str</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_username</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_password</span><span class="p">,</span>
+                <span class="n">option</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="n">arg1</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">arg1</span><span class="p">,</span>
+                <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="n">arg2</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">arg2</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="n">client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_httpx_async_client</span> <span class="ow">or</span> <span class="n">AsyncClient</span><span class="p">()</span>
+        <span class="n">response</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_api_url</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cipher</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">command_str</span><span class="p">),</span>
+                <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_extra_url_params</span><span class="p">(),</span>
+            <span class="p">},</span>
+            <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_request_timeout</span><span class="o">.</span><span class="n">seconds</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">response_raw</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_httpx_async_client</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">aclose</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Error messages are returned unencrypted so we try to decrypt the response.</span>
+            <span class="c1"># if that fails, then we use what was returned.</span>
+            <span class="n">response_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cipher</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">response_raw</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">response_text</span> <span class="o">=</span> <span class="n">response_raw</span>
+
+        <span class="n">root_element</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">ElementTree</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">response_text</span><span class="p">)</span>
+
+        <span class="n">error_element</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">root_element</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">error_element</span><span class="p">:</span>
+            <span class="n">api_error</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">element_to_api_error</span><span class="p">(</span><span class="n">error_element</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_exception_map</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_error</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="n">ApiError</span><span class="p">)(</span>
+                <span class="n">api_error</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="n">api_error</span><span class="o">.</span><span class="n">message</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">Element</span><span class="p">,</span> <span class="n">root_element</span><span class="p">)</span>
+
+<div class="viewcode-block" id="AbstractGateApi.async_info"><a class="viewcode-back" href="../ismartgate.html#ismartgate.AbstractGateApi.async_info">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">async_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">InfoResponseType</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get info about the device and doors.&quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="AbstractGateApi.async_activate"><a class="viewcode-back" href="../ismartgate.html#ismartgate.AbstractGateApi.async_activate">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">async_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">door_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ActivateResponseType</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Send a command to open/close/stop the door.</span>
+
+<span class="sd">        Devices do not have a status for opening or closing. So running</span>
+<span class="sd">        this method during an action will stop the door. It&#39;s recommended you</span>
+<span class="sd">        use open_door() or close_door() as those methods check the status</span>
+<span class="sd">        before running and run if needed.&quot;&quot;&quot;</span></div>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">_get_activate_api_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">info</span><span class="p">:</span> <span class="n">InfoResponseType</span><span class="p">,</span> <span class="n">door_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get api code for activate actions.&quot;&quot;&quot;</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">_get_exception_map</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">ExceptionGenerator</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return a more specific exception.&quot;&quot;&quot;</span>
+
+    <span class="c1"># pylint: disable=no-self-use</span>
+    <span class="k">def</span> <span class="nf">_get_extra_url_params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">{}</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_async_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Element</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get info about the device and doors.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_async_request</span><span class="p">(</span><span class="n">RequestOption</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_async_activate</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">door_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">info</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">InfoResponseType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Element</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Send a command to open/close/stop the door.</span>
+
+<span class="sd">        Gogogate2/iSmartGate do not have a status for opening or closing. So</span>
+<span class="sd">        running this method during an action will stop the door. It&#39;s</span>
+<span class="sd">        recommended you use open_door() or close_door() as those methods check</span>
+<span class="sd">        the status before running and run if needed.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_async_request</span><span class="p">(</span>
+            <span class="n">RequestOption</span><span class="o">.</span><span class="n">ACTIVATE</span><span class="p">,</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">door_id</span><span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_activate_api_code</span><span class="p">(</span>
+                <span class="n">info</span> <span class="k">if</span> <span class="n">info</span> <span class="k">else</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">async_info</span><span class="p">(),</span> <span class="n">door_id</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_async_set_door_status</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">door_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">target_door_status</span><span class="p">:</span> <span class="n">DoorStatus</span><span class="p">,</span>
+        <span class="n">consider_transitional_states</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Send call to open/close a door if door is not already in that state.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">target_door_status</span> <span class="o">==</span> <span class="n">DoorStatus</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># Get current door status.</span>
+        <span class="n">info</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">async_info</span><span class="p">()</span>
+        <span class="n">statuses</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_door_statuses</span><span class="p">(</span>
+            <span class="n">info</span><span class="p">,</span> <span class="n">use_transitional_status</span><span class="o">=</span><span class="n">consider_transitional_states</span>
+        <span class="p">)</span>
+        <span class="n">current_door_status</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">statuses</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">door_id</span><span class="p">)</span>
+        <span class="n">result_door_statuses</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">OPEN_DOOR_STATUSES</span>
+            <span class="k">if</span> <span class="n">target_door_status</span> <span class="o">==</span> <span class="n">DoorStatus</span><span class="o">.</span><span class="n">OPENED</span>
+            <span class="k">else</span> <span class="n">CLOSE_DOOR_STATUSES</span>
+        <span class="p">)</span>
+        <span class="n">transitional_door_status</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">TransitionDoorStatus</span><span class="o">.</span><span class="n">OPENING</span>
+            <span class="k">if</span> <span class="n">target_door_status</span> <span class="o">==</span> <span class="n">DoorStatus</span><span class="o">.</span><span class="n">OPENED</span>
+            <span class="k">else</span> <span class="n">TransitionDoorStatus</span><span class="o">.</span><span class="n">CLOSING</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Door is invalid, not configured, already in desired state or transitioning to it.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">current_door_status</span> <span class="ow">or</span> <span class="n">current_door_status</span> <span class="ow">in</span> <span class="n">result_door_statuses</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_async_activate</span><span class="p">(</span><span class="n">door_id</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+
+        <span class="c1"># Set the transitional status.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_transition_door_status</span><span class="p">[</span><span class="n">door_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">CachedTransitionDoorStatus</span><span class="p">(</span>
+            <span class="n">door_id</span><span class="o">=</span><span class="n">door_id</span><span class="p">,</span>
+            <span class="n">activated</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">(),</span>
+            <span class="n">transition_status</span><span class="o">=</span><span class="n">transitional_door_status</span><span class="p">,</span>
+            <span class="n">target_status</span><span class="o">=</span><span class="n">target_door_status</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="kc">True</span>
+
+<div class="viewcode-block" id="AbstractGateApi.async_close_door"><a class="viewcode-back" href="../ismartgate.html#ismartgate.AbstractGateApi.async_close_door">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">async_close_door</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">door_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">consider_transitional_states</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Close a door.</span>
+
+<span class="sd">        :return True if close command sent, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_async_set_door_status</span><span class="p">(</span>
+            <span class="n">door_id</span><span class="p">,</span>
+            <span class="n">DoorStatus</span><span class="o">.</span><span class="n">CLOSED</span><span class="p">,</span>
+            <span class="n">consider_transitional_states</span><span class="o">=</span><span class="n">consider_transitional_states</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="AbstractGateApi.async_open_door"><a class="viewcode-back" href="../ismartgate.html#ismartgate.AbstractGateApi.async_open_door">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">async_open_door</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">door_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">consider_transitional_states</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Open a door.</span>
+
+<span class="sd">        :return True if open command sent, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_async_set_door_status</span><span class="p">(</span>
+            <span class="n">door_id</span><span class="p">,</span>
+            <span class="n">DoorStatus</span><span class="o">.</span><span class="n">OPENED</span><span class="p">,</span>
+            <span class="n">consider_transitional_states</span><span class="o">=</span><span class="n">consider_transitional_states</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_door_statuses</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">info</span><span class="p">:</span> <span class="n">InfoResponseType</span><span class="p">,</span> <span class="n">use_transitional_status</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">AllDoorStatus</span><span class="p">]:</span>
+        <span class="n">doors</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">get_configured_doors</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+
+        <span class="c1"># Clean out the cache.</span>
+        <span class="k">for</span> <span class="p">(</span>
+            <span class="n">cached_door_id</span><span class="p">,</span>
+            <span class="n">cached_transitional_status</span><span class="p">,</span>
+        <span class="p">)</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_transition_door_status</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">-</span> <span class="n">cached_transitional_status</span><span class="o">.</span><span class="n">activated</span>
+                <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transition_status_timeout</span>
+            <span class="p">):</span>
+                <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transition_door_status</span><span class="p">[</span><span class="n">cached_door_id</span><span class="p">]</span>
+
+        <span class="c1"># For each door, determine the status.</span>
+        <span class="n">result</span><span class="p">:</span> <span class="n">Final</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">AllDoorStatus</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">door</span> <span class="ow">in</span> <span class="n">doors</span><span class="p">:</span>
+            <span class="n">transitional_status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transition_door_status</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">door</span><span class="o">.</span><span class="n">door_id</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">use_transitional_status</span>
+                <span class="ow">and</span> <span class="n">transitional_status</span>
+                <span class="ow">and</span> <span class="n">transitional_status</span><span class="o">.</span><span class="n">target_status</span> <span class="o">!=</span> <span class="n">door</span><span class="o">.</span><span class="n">status</span>
+            <span class="p">):</span>
+                <span class="n">result</span><span class="p">[</span><span class="n">door</span><span class="o">.</span><span class="n">door_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">transitional_status</span><span class="o">.</span><span class="n">transition_status</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">result</span><span class="p">[</span><span class="n">door</span><span class="o">.</span><span class="n">door_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">door</span><span class="o">.</span><span class="n">status</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+<div class="viewcode-block" id="AbstractGateApi.async_get_door_statuses"><a class="viewcode-back" href="../ismartgate.html#ismartgate.AbstractGateApi.async_get_door_statuses">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">async_get_door_statuses</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">use_transitional_status</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">AllDoorStatus</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Get configured door statuses.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_door_statuses</span><span class="p">(</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">async_info</span><span class="p">(),</span> <span class="n">use_transitional_status</span><span class="o">=</span><span class="n">use_transitional_status</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="AbstractGateApi.async_get_door_statuses_from_info"><a class="viewcode-back" href="../ismartgate.html#ismartgate.AbstractGateApi.async_get_door_statuses_from_info">[docs]</a>    <span class="k">def</span> <span class="nf">async_get_door_statuses_from_info</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">info</span><span class="p">:</span> <span class="n">InfoResponseType</span><span class="p">,</span> <span class="n">use_transitional_status</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">AllDoorStatus</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Get configured door statuses from an existing info response.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_door_statuses</span><span class="p">(</span>
+            <span class="n">info</span><span class="p">,</span> <span class="n">use_transitional_status</span><span class="o">=</span><span class="n">use_transitional_status</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="ISmartGateApi"><a class="viewcode-back" href="../ismartgate.html#ismartgate.ISmartGateApi">[docs]</a><span class="k">class</span> <span class="nc">ISmartGateApi</span><span class="p">(</span>
+    <span class="n">AbstractGateApi</span><span class="p">[</span>
+        <span class="n">ISmartGateApiCipher</span><span class="p">,</span> <span class="n">ISmartGateInfoResponse</span><span class="p">,</span> <span class="n">ISmartGateActivateResponse</span>
+    <span class="p">]</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;API for interacting with iSmartGate devices.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">host</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">request_timeout</span><span class="p">:</span> <span class="n">timedelta</span> <span class="o">=</span> <span class="n">AbstractGateApi</span><span class="o">.</span><span class="n">DEFAULT_REQUEST_TIMEOUT</span><span class="p">,</span>
+        <span class="n">transition_status_timeout</span><span class="p">:</span> <span class="n">timedelta</span> <span class="o">=</span> <span class="n">AbstractGateApi</span><span class="o">.</span><span class="n">DEFAULT_TRANSITION_STATUS_TIMEOUT</span><span class="p">,</span>
+        <span class="n">httpx_async_client</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">AsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Initialize the object.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">host</span><span class="p">,</span>
+            <span class="n">username</span><span class="p">,</span>
+            <span class="n">password</span><span class="p">,</span>
+            <span class="n">ISmartGateApiCipher</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span>
+            <span class="n">request_timeout</span><span class="o">=</span><span class="n">request_timeout</span><span class="p">,</span>
+            <span class="n">transition_status_timeout</span><span class="o">=</span><span class="n">transition_status_timeout</span><span class="p">,</span>
+            <span class="n">httpx_async_client</span><span class="o">=</span><span class="n">httpx_async_client</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="ISmartGateApi.async_info"><a class="viewcode-back" href="../ismartgate.html#ismartgate.ISmartGateApi.async_info">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">async_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ISmartGateInfoResponse</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get info about the device and doors.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">element_to_ismartgate_info_response</span><span class="p">(</span><span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_async_info</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="ISmartGateApi.async_activate"><a class="viewcode-back" href="../ismartgate.html#ismartgate.ISmartGateApi.async_activate">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">async_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">door_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ISmartGateActivateResponse</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Send a command to open/close/stop the door.</span>
+
+<span class="sd">        Devices do not have a status for opening or closing. So running</span>
+<span class="sd">        this method during an action will stop the door. It&#39;s recommended you</span>
+<span class="sd">        use open_door() or close_door() as those methods check the status</span>
+<span class="sd">        before running and run if needed.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">element_to_ismartgate_activate_response</span><span class="p">(</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_async_activate</span><span class="p">(</span><span class="n">door_id</span><span class="p">)</span>
+        <span class="p">)</span></div>
+
+    <span class="c1">#  pylint: disable=no-self-use</span>
+    <span class="k">def</span> <span class="nf">_get_activate_api_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">info</span><span class="p">:</span> <span class="n">ISmartGateInfoResponse</span><span class="p">,</span> <span class="n">door_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get api code for activate actions.&quot;&quot;&quot;</span>
+        <span class="n">door</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">get_door_by_id</span><span class="p">(</span><span class="n">door_id</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">door</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InvalidDoorException</span><span class="p">(</span><span class="n">door_id</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">ISmartGateDoor</span><span class="p">,</span> <span class="n">door</span><span class="p">)</span><span class="o">.</span><span class="n">apicode</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_get_exception_map</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">ExceptionGenerator</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return a more specific exception.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="n">ISmartGateApiErrorCode</span><span class="o">.</span><span class="n">CREDENTIALS_NOT_SET</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="n">CredentialsNotSetException</span><span class="p">,</span>
+            <span class="n">ISmartGateApiErrorCode</span><span class="o">.</span><span class="n">CREDENTIALS_INCORRECT</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="n">CredentialsIncorrectException</span><span class="p">,</span>
+            <span class="n">ISmartGateApiErrorCode</span><span class="o">.</span><span class="n">INVALID_OPTION</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="n">InvalidOptionException</span><span class="p">,</span>
+            <span class="n">ISmartGateApiErrorCode</span><span class="o">.</span><span class="n">INVALID_API_CODE</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="n">InvalidApiCodeException</span><span class="p">,</span>
+            <span class="n">ISmartGateApiErrorCode</span><span class="o">.</span><span class="n">DOOR_NOT_SET</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="n">DoorNotSetException</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">_get_extra_url_params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Get extra url params when making calls.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">randbelow</span><span class="p">(</span><span class="mi">100000000</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">cipher</span><span class="o">.</span><span class="n">token</span><span class="p">,</span>
+        <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="GogoGate2Api"><a class="viewcode-back" href="../ismartgate.html#ismartgate.GogoGate2Api">[docs]</a><span class="k">class</span> <span class="nc">GogoGate2Api</span><span class="p">(</span>
+    <span class="n">AbstractGateApi</span><span class="p">[</span>
+        <span class="n">GogoGate2ApiCipher</span><span class="p">,</span> <span class="n">GogoGate2InfoResponse</span><span class="p">,</span> <span class="n">GogoGate2ActivateResponse</span>
+    <span class="p">]</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;API for interacting with GogoGate2 devices.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">host</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">request_timeout</span><span class="p">:</span> <span class="n">timedelta</span> <span class="o">=</span> <span class="n">AbstractGateApi</span><span class="o">.</span><span class="n">DEFAULT_REQUEST_TIMEOUT</span><span class="p">,</span>
+        <span class="n">transition_status_timeout</span><span class="p">:</span> <span class="n">timedelta</span> <span class="o">=</span> <span class="n">AbstractGateApi</span><span class="o">.</span><span class="n">DEFAULT_TRANSITION_STATUS_TIMEOUT</span><span class="p">,</span>
+        <span class="n">httpx_async_client</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">AsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Initialize the object.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">host</span><span class="p">,</span>
+            <span class="n">username</span><span class="p">,</span>
+            <span class="n">password</span><span class="p">,</span>
+            <span class="n">GogoGate2ApiCipher</span><span class="p">(),</span>
+            <span class="n">request_timeout</span><span class="o">=</span><span class="n">request_timeout</span><span class="p">,</span>
+            <span class="n">transition_status_timeout</span><span class="o">=</span><span class="n">transition_status_timeout</span><span class="p">,</span>
+            <span class="n">httpx_async_client</span><span class="o">=</span><span class="n">httpx_async_client</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="GogoGate2Api.async_info"><a class="viewcode-back" href="../ismartgate.html#ismartgate.GogoGate2Api.async_info">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">async_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GogoGate2InfoResponse</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get info about the device and doors.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">element_to_gogogate2_info_response</span><span class="p">(</span><span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_async_info</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="GogoGate2Api.async_activate"><a class="viewcode-back" href="../ismartgate.html#ismartgate.GogoGate2Api.async_activate">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">async_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">door_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GogoGate2ActivateResponse</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Send a command to open/close/stop the door.</span>
+
+<span class="sd">        Devices do not have a status for opening or closing. So running</span>
+<span class="sd">        this method during an action will stop the door. It&#39;s recommended you</span>
+<span class="sd">        use open_door() or close_door() as those methods check the status</span>
+<span class="sd">        before running and run if needed.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">element_to_gogogate2_activate_response</span><span class="p">(</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_async_activate</span><span class="p">(</span><span class="n">door_id</span><span class="p">)</span>
+        <span class="p">)</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_get_exception_map</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">ExceptionGenerator</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return a more specific exception.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="n">GogoGate2ApiErrorCode</span><span class="o">.</span><span class="n">CREDENTIALS_NOT_SET</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="n">CredentialsNotSetException</span><span class="p">,</span>
+            <span class="n">GogoGate2ApiErrorCode</span><span class="o">.</span><span class="n">CREDENTIALS_INCORRECT</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="n">CredentialsIncorrectException</span><span class="p">,</span>
+            <span class="n">GogoGate2ApiErrorCode</span><span class="o">.</span><span class="n">INVALID_OPTION</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="n">InvalidOptionException</span><span class="p">,</span>
+            <span class="n">GogoGate2ApiErrorCode</span><span class="o">.</span><span class="n">INVALID_API_CODE</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="n">InvalidApiCodeException</span><span class="p">,</span>
+            <span class="n">GogoGate2ApiErrorCode</span><span class="o">.</span><span class="n">DOOR_NOT_SET</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="n">DoorNotSetException</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="c1"># pylint: disable=unused-argument, no-self-use</span>
+    <span class="k">def</span> <span class="nf">_get_activate_api_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">info</span><span class="p">:</span> <span class="n">GogoGate2InfoResponse</span><span class="p">,</span> <span class="n">door_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get api code for activate actions.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">info</span><span class="o">.</span><span class="n">apicode</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, J. Nick Koston.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

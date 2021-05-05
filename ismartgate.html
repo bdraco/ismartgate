@@ -1,0 +1,1480 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>ismartgate package &mdash; ismartgate 0.9.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="ismartgate" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ismartgate
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#stable-release">Stable release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#from-sources">From sources</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Package modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ismartgate package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ismartgate.cli">ismartgate.cli module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ismartgate.common">ismartgate.common module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ismartgate.const">ismartgate.const module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ismartgate">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#deploying">Deploying</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ismartgate</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">ismartgate</a> &raquo;</li>
+        
+      <li>ismartgate package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/ismartgate.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="contributing.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+      
+      
+        <a href="modules.html" class="btn btn-neutral float-left" title="ismartgate" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ismartgate-package">
+<h1>ismartgate package<a class="headerlink" href="#ismartgate-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ismartgate.cli">
+<span id="ismartgate-cli-module"></span><h2>ismartgate.cli module<a class="headerlink" href="#module-ismartgate.cli" title="Permalink to this headline">¶</a></h2>
+<p>CLI for gate devices.</p>
+<dl class="py class">
+<dt id="ismartgate.cli.Command">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.cli.</span></code><code class="sig-name descname"><span class="pre">Command</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/cli.html#Command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.cli.Command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Device actions.</p>
+<dl class="py attribute">
+<dt id="ismartgate.cli.Command.CLOSE">
+<code class="sig-name descname"><span class="pre">CLOSE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'close'</span></em><a class="headerlink" href="#ismartgate.cli.Command.CLOSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.cli.Command.INFO">
+<code class="sig-name descname"><span class="pre">INFO</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'info'</span></em><a class="headerlink" href="#ismartgate.cli.Command.INFO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.cli.Command.OPEN">
+<code class="sig-name descname"><span class="pre">OPEN</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'open'</span></em><a class="headerlink" href="#ismartgate.cli.Command.OPEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.cli.DeviceType">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.cli.</span></code><code class="sig-name descname"><span class="pre">DeviceType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/cli.html#DeviceType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.cli.DeviceType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Device types.</p>
+<dl class="py attribute">
+<dt id="ismartgate.cli.DeviceType.GOGOGATE2">
+<code class="sig-name descname"><span class="pre">GOGOGATE2</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'gogogate2'</span></em><a class="headerlink" href="#ismartgate.cli.DeviceType.GOGOGATE2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.cli.DeviceType.ISMARTGATE">
+<code class="sig-name descname"><span class="pre">ISMARTGATE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'ismartgate'</span></em><a class="headerlink" href="#ismartgate.cli.DeviceType.ISMARTGATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.cli.DoorArgument">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.cli.</span></code><code class="sig-name descname"><span class="pre">DoorArgument</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/cli.html#DoorArgument"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.cli.DoorArgument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Door arguments.</p>
+<dl class="py attribute">
+<dt id="ismartgate.cli.DoorArgument.DOOR_ID">
+<code class="sig-name descname"><span class="pre">DOOR_ID</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'door_id'</span></em><a class="headerlink" href="#ismartgate.cli.DoorArgument.DOOR_ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.cli.Option">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.cli.</span></code><code class="sig-name descname"><span class="pre">Option</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/cli.html#Option"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.cli.Option" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>CLI options.</p>
+<dl class="py attribute">
+<dt id="ismartgate.cli.Option.DEVICE_TYPE">
+<code class="sig-name descname"><span class="pre">DEVICE_TYPE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'--device-type'</span></em><a class="headerlink" href="#ismartgate.cli.Option.DEVICE_TYPE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.cli.Option.HOST">
+<code class="sig-name descname"><span class="pre">HOST</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'--host'</span></em><a class="headerlink" href="#ismartgate.cli.Option.HOST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.cli.Option.PASSWORD">
+<code class="sig-name descname"><span class="pre">PASSWORD</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'--password'</span></em><a class="headerlink" href="#ismartgate.cli.Option.PASSWORD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.cli.Option.USERNAME">
+<code class="sig-name descname"><span class="pre">USERNAME</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'--username'</span></em><a class="headerlink" href="#ismartgate.cli.Option.USERNAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.cli.cli_with_defaults">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.cli.</span></code><code class="sig-name descname"><span class="pre">cli_with_defaults</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.cli.DeviceType" title="ismartgate.cli.DeviceType"><span class="pre">ismartgate.cli.DeviceType</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="reference internal" href="_modules/ismartgate/cli.html#cli_with_defaults"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.cli.cli_with_defaults" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run command with default value.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.cli.coro">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.cli.</span></code><code class="sig-name descname"><span class="pre">coro</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Any</span><a class="reference internal" href="_modules/ismartgate/cli.html#coro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.cli.coro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrap a coroutine in a async runner.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.cli.default_password">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.cli.</span></code><code class="sig-name descname"><span class="pre">default_password</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="reference internal" href="_modules/ismartgate/cli.html#default_password"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.cli.default_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the password from user input.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.cli.get_context_api">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.cli.</span></code><code class="sig-name descname"><span class="pre">get_context_api</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">click.core.Context</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#ismartgate.AbstractGateApi" title="ismartgate.AbstractGateApi"><span class="pre">ismartgate.AbstractGateApi</span></a><a class="reference internal" href="_modules/ismartgate/cli.html#get_context_api"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.cli.get_context_api" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get gate API from context.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.cli.gogogate2_cli">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.cli.</span></code><code class="sig-name descname"><span class="pre">gogogate2_cli</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="reference internal" href="_modules/ismartgate/cli.html#gogogate2_cli"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.cli.gogogate2_cli" title="Permalink to this definition">¶</a></dt>
+<dd><p>GogoGate2 entrypoint.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.cli.ismartgate_cli">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.cli.</span></code><code class="sig-name descname"><span class="pre">ismartgate_cli</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="reference internal" href="_modules/ismartgate/cli.html#ismartgate_cli"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.cli.ismartgate_cli" title="Permalink to this definition">¶</a></dt>
+<dd><p>iSmartGate entrypoint.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.cli.maybe_init">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.cli.</span></code><code class="sig-name descname"><span class="pre">maybe_init</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="reference internal" href="_modules/ismartgate/cli.html#maybe_init"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.cli.maybe_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the main function if needed.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ismartgate.common">
+<span id="ismartgate-common-module"></span><h2>ismartgate.common module<a class="headerlink" href="#module-ismartgate.common" title="Permalink to this headline">¶</a></h2>
+<p>Common code for gate APIs.</p>
+<dl class="py class">
+<dt id="ismartgate.common.AbstractActivateResponse">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">AbstractActivateResponse</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#AbstractActivateResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.AbstractActivateResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Response from activate calls.</p>
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractActivateResponse.result">
+<code class="sig-name descname"><span class="pre">result</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.AbstractActivateResponse.result" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.common.AbstractDoor">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">AbstractDoor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">door_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permission</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.DoorMode" title="ismartgate.common.DoorMode"><span class="pre">ismartgate.common.DoorMode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.DoorStatus" title="ismartgate.common.DoorStatus"><span class="pre">ismartgate.common.DoorStatus</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensorid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#AbstractDoor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.AbstractDoor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Door object.</p>
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractDoor.camera">
+<code class="sig-name descname"><span class="pre">camera</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.AbstractDoor.camera" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractDoor.door_id">
+<code class="sig-name descname"><span class="pre">door_id</span></code><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#ismartgate.common.AbstractDoor.door_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractDoor.events">
+<code class="sig-name descname"><span class="pre">events</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ismartgate.common.AbstractDoor.events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractDoor.gate">
+<code class="sig-name descname"><span class="pre">gate</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.AbstractDoor.gate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractDoor.mode">
+<code class="sig-name descname"><span class="pre">mode</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.DoorMode" title="ismartgate.common.DoorMode"><span class="pre">ismartgate.common.DoorMode</span></a></em><a class="headerlink" href="#ismartgate.common.AbstractDoor.mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractDoor.name">
+<code class="sig-name descname"><span class="pre">name</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ismartgate.common.AbstractDoor.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractDoor.permission">
+<code class="sig-name descname"><span class="pre">permission</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.AbstractDoor.permission" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractDoor.sensor">
+<code class="sig-name descname"><span class="pre">sensor</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.AbstractDoor.sensor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractDoor.sensorid">
+<code class="sig-name descname"><span class="pre">sensorid</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ismartgate.common.AbstractDoor.sensorid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractDoor.status">
+<code class="sig-name descname"><span class="pre">status</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.DoorStatus" title="ismartgate.common.DoorStatus"><span class="pre">ismartgate.common.DoorStatus</span></a></em><a class="headerlink" href="#ismartgate.common.AbstractDoor.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractDoor.temperature">
+<code class="sig-name descname"><span class="pre">temperature</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ismartgate.common.AbstractDoor.temperature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractDoor.voltage">
+<code class="sig-name descname"><span class="pre">voltage</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ismartgate.common.AbstractDoor.voltage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.common.AbstractInfoResponse">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">AbstractInfoResponse</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apiversion</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remoteaccessenabled</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remoteaccess</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">firmwareversion</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">door1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.AbstractDoor" title="ismartgate.common.AbstractDoor"><span class="pre">ismartgate.common.AbstractDoor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">door2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.AbstractDoor" title="ismartgate.common.AbstractDoor"><span class="pre">ismartgate.common.AbstractDoor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">door3</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.AbstractDoor" title="ismartgate.common.AbstractDoor"><span class="pre">ismartgate.common.AbstractDoor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.Network" title="ismartgate.common.Network"><span class="pre">ismartgate.common.Network</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">wifi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.Wifi" title="ismartgate.common.Wifi"><span class="pre">ismartgate.common.Wifi</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#AbstractInfoResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.AbstractInfoResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Response from info calls.</p>
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractInfoResponse.apiversion">
+<code class="sig-name descname"><span class="pre">apiversion</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#ismartgate.common.AbstractInfoResponse.apiversion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractInfoResponse.door1">
+<code class="sig-name descname"><span class="pre">door1</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.AbstractDoor" title="ismartgate.common.AbstractDoor"><span class="pre">ismartgate.common.AbstractDoor</span></a></em><a class="headerlink" href="#ismartgate.common.AbstractInfoResponse.door1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractInfoResponse.door2">
+<code class="sig-name descname"><span class="pre">door2</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.AbstractDoor" title="ismartgate.common.AbstractDoor"><span class="pre">ismartgate.common.AbstractDoor</span></a></em><a class="headerlink" href="#ismartgate.common.AbstractInfoResponse.door2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractInfoResponse.door3">
+<code class="sig-name descname"><span class="pre">door3</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.AbstractDoor" title="ismartgate.common.AbstractDoor"><span class="pre">ismartgate.common.AbstractDoor</span></a></em><a class="headerlink" href="#ismartgate.common.AbstractInfoResponse.door3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractInfoResponse.firmwareversion">
+<code class="sig-name descname"><span class="pre">firmwareversion</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#ismartgate.common.AbstractInfoResponse.firmwareversion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractInfoResponse.model">
+<code class="sig-name descname"><span class="pre">model</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#ismartgate.common.AbstractInfoResponse.model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractInfoResponse.network">
+<code class="sig-name descname"><span class="pre">network</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.Network" title="ismartgate.common.Network"><span class="pre">ismartgate.common.Network</span></a></em><a class="headerlink" href="#ismartgate.common.AbstractInfoResponse.network" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractInfoResponse.remoteaccess">
+<code class="sig-name descname"><span class="pre">remoteaccess</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#ismartgate.common.AbstractInfoResponse.remoteaccess" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractInfoResponse.remoteaccessenabled">
+<code class="sig-name descname"><span class="pre">remoteaccessenabled</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.AbstractInfoResponse.remoteaccessenabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractInfoResponse.user">
+<code class="sig-name descname"><span class="pre">user</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#ismartgate.common.AbstractInfoResponse.user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.AbstractInfoResponse.wifi">
+<code class="sig-name descname"><span class="pre">wifi</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.Wifi" title="ismartgate.common.Wifi"><span class="pre">ismartgate.common.Wifi</span></a></em><a class="headerlink" href="#ismartgate.common.AbstractInfoResponse.wifi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="ismartgate.common.ApiError">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">ApiError</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#ApiError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.ApiError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Generic API error.</p>
+<dl class="py method">
+<dt id="ismartgate.common.ApiError.code">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">code</span></code><a class="headerlink" href="#ismartgate.common.ApiError.code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the error code.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ismartgate.common.ApiError.message">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">message</span></code><a class="headerlink" href="#ismartgate.common.ApiError.message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the error message.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.common.CachedTransitionDoorStatus">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">CachedTransitionDoorStatus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">door_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activated</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">datetime.datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition_status</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.TransitionDoorStatus" title="ismartgate.common.TransitionDoorStatus"><span class="pre">ismartgate.common.TransitionDoorStatus</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_status</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.DoorStatus" title="ismartgate.common.DoorStatus"><span class="pre">ismartgate.common.DoorStatus</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#CachedTransitionDoorStatus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.CachedTransitionDoorStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Cached persistent door status.</p>
+<dl class="py attribute">
+<dt id="ismartgate.common.CachedTransitionDoorStatus.activated">
+<code class="sig-name descname"><span class="pre">activated</span></code><em class="property"><span class="pre">:</span> <span class="pre">datetime.datetime</span></em><a class="headerlink" href="#ismartgate.common.CachedTransitionDoorStatus.activated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.CachedTransitionDoorStatus.door_id">
+<code class="sig-name descname"><span class="pre">door_id</span></code><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#ismartgate.common.CachedTransitionDoorStatus.door_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.CachedTransitionDoorStatus.target_status">
+<code class="sig-name descname"><span class="pre">target_status</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.DoorStatus" title="ismartgate.common.DoorStatus"><span class="pre">ismartgate.common.DoorStatus</span></a></em><a class="headerlink" href="#ismartgate.common.CachedTransitionDoorStatus.target_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.CachedTransitionDoorStatus.transition_status">
+<code class="sig-name descname"><span class="pre">transition_status</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.TransitionDoorStatus" title="ismartgate.common.TransitionDoorStatus"><span class="pre">ismartgate.common.TransitionDoorStatus</span></a></em><a class="headerlink" href="#ismartgate.common.CachedTransitionDoorStatus.transition_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="ismartgate.common.CredentialsIncorrectException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">CredentialsIncorrectException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#CredentialsIncorrectException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.CredentialsIncorrectException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ismartgate.common.ApiError" title="ismartgate.common.ApiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.common.ApiError</span></code></a></p>
+<p>Credentials incorrect exception.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="ismartgate.common.CredentialsNotSetException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">CredentialsNotSetException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#CredentialsNotSetException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.CredentialsNotSetException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ismartgate.common.ApiError" title="ismartgate.common.ApiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.common.ApiError</span></code></a></p>
+<p>Credentials not set exception.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.common.DoorMode">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">DoorMode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#DoorMode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.DoorMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Door mode.</p>
+<dl class="py attribute">
+<dt id="ismartgate.common.DoorMode.GARAGE">
+<code class="sig-name descname"><span class="pre">GARAGE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'garage'</span></em><a class="headerlink" href="#ismartgate.common.DoorMode.GARAGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.DoorMode.ON_OFF">
+<code class="sig-name descname"><span class="pre">ON_OFF</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'onoff'</span></em><a class="headerlink" href="#ismartgate.common.DoorMode.ON_OFF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.DoorMode.PULSE">
+<code class="sig-name descname"><span class="pre">PULSE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'pulse'</span></em><a class="headerlink" href="#ismartgate.common.DoorMode.PULSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="ismartgate.common.DoorNotSetException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">DoorNotSetException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#DoorNotSetException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.DoorNotSetException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ismartgate.common.ApiError" title="ismartgate.common.ApiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.common.ApiError</span></code></a></p>
+<p>Door not set exception.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.common.DoorStatus">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">DoorStatus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#DoorStatus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.DoorStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Door status.</p>
+<dl class="py attribute">
+<dt id="ismartgate.common.DoorStatus.CLOSED">
+<code class="sig-name descname"><span class="pre">CLOSED</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'closed'</span></em><a class="headerlink" href="#ismartgate.common.DoorStatus.CLOSED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.DoorStatus.OPENED">
+<code class="sig-name descname"><span class="pre">OPENED</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'opened'</span></em><a class="headerlink" href="#ismartgate.common.DoorStatus.OPENED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.DoorStatus.UNDEFINED">
+<code class="sig-name descname"><span class="pre">UNDEFINED</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'undefined'</span></em><a class="headerlink" href="#ismartgate.common.DoorStatus.UNDEFINED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.common.EnhancedJSONEncoder">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">EnhancedJSONEncoder</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipkeys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_ascii</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_circular</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#EnhancedJSONEncoder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.EnhancedJSONEncoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">json.encoder.JSONEncoder</span></code></p>
+<p>JSON encoder.</p>
+<p>Constructor for JSONEncoder, with sensible defaults.</p>
+<p>If skipkeys is false, then it is a TypeError to attempt
+encoding of keys that are not str, int, float or None.  If
+skipkeys is True, such items are simply skipped.</p>
+<p>If ensure_ascii is true, the output is guaranteed to be str
+objects with all incoming non-ASCII characters escaped.  If
+ensure_ascii is false, the output can contain non-ASCII characters.</p>
+<p>If check_circular is true, then lists, dicts, and custom encoded
+objects will be checked for circular references during encoding to
+prevent an infinite recursion (which would cause an OverflowError).
+Otherwise, no such check takes place.</p>
+<p>If allow_nan is true, then NaN, Infinity, and -Infinity will be
+encoded as such.  This behavior is not JSON specification compliant,
+but is consistent with most JavaScript based encoders and decoders.
+Otherwise, it will be a ValueError to encode such floats.</p>
+<p>If sort_keys is true, then the output of dictionaries will be
+sorted by key; this is useful for regression tests to ensure
+that JSON serializations can be compared on a day-to-day basis.</p>
+<p>If indent is a non-negative integer, then JSON array
+elements and object members will be pretty-printed with that
+indent level.  An indent level of 0 will only insert newlines.
+None is the most compact representation.</p>
+<p>If specified, separators should be an (item_separator, key_separator)
+tuple.  The default is (‘, ‘, ‘: ‘) if <em>indent</em> is <code class="docutils literal notranslate"><span class="pre">None</span></code> and
+(‘,’, ‘: ‘) otherwise.  To get the most compact JSON representation,
+you should specify (‘,’, ‘:’) to eliminate whitespace.</p>
+<p>If specified, default is a function that gets called for objects
+that can’t otherwise be serialized.  It should return a JSON encodable
+version of the object or raise a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>.</p>
+<dl class="py method">
+<dt id="ismartgate.common.EnhancedJSONEncoder.default">
+<code class="sig-name descname"><span class="pre">default</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Any</span><a class="reference internal" href="_modules/ismartgate/common.html#EnhancedJSONEncoder.default"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.EnhancedJSONEncoder.default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encode the object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.common.GogoGate2ActivateResponse">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">GogoGate2ActivateResponse</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#GogoGate2ActivateResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.GogoGate2ActivateResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ismartgate.common.AbstractActivateResponse" title="ismartgate.common.AbstractActivateResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.common.AbstractActivateResponse</span></code></a></p>
+<p>GogoGate2 response from activate calls.</p>
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2ActivateResponse.result">
+<code class="sig-name descname"><span class="pre">result</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.GogoGate2ActivateResponse.result" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.common.GogoGate2Door">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">GogoGate2Door</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">door_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permission</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.DoorMode" title="ismartgate.common.DoorMode"><span class="pre">ismartgate.common.DoorMode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.DoorStatus" title="ismartgate.common.DoorStatus"><span class="pre">ismartgate.common.DoorStatus</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensorid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#GogoGate2Door"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.GogoGate2Door" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ismartgate.common.AbstractDoor" title="ismartgate.common.AbstractDoor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.common.AbstractDoor</span></code></a></p>
+<p>Door object.</p>
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2Door.camera">
+<code class="sig-name descname"><span class="pre">camera</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.GogoGate2Door.camera" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2Door.door_id">
+<code class="sig-name descname"><span class="pre">door_id</span></code><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#ismartgate.common.GogoGate2Door.door_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2Door.events">
+<code class="sig-name descname"><span class="pre">events</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ismartgate.common.GogoGate2Door.events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2Door.gate">
+<code class="sig-name descname"><span class="pre">gate</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.GogoGate2Door.gate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2Door.mode">
+<code class="sig-name descname"><span class="pre">mode</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.DoorMode" title="ismartgate.common.DoorMode"><span class="pre">ismartgate.common.DoorMode</span></a></em><a class="headerlink" href="#ismartgate.common.GogoGate2Door.mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2Door.name">
+<code class="sig-name descname"><span class="pre">name</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ismartgate.common.GogoGate2Door.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2Door.permission">
+<code class="sig-name descname"><span class="pre">permission</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.GogoGate2Door.permission" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2Door.sensor">
+<code class="sig-name descname"><span class="pre">sensor</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.GogoGate2Door.sensor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2Door.sensorid">
+<code class="sig-name descname"><span class="pre">sensorid</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ismartgate.common.GogoGate2Door.sensorid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2Door.status">
+<code class="sig-name descname"><span class="pre">status</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.DoorStatus" title="ismartgate.common.DoorStatus"><span class="pre">ismartgate.common.DoorStatus</span></a></em><a class="headerlink" href="#ismartgate.common.GogoGate2Door.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2Door.temperature">
+<code class="sig-name descname"><span class="pre">temperature</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ismartgate.common.GogoGate2Door.temperature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2Door.voltage">
+<code class="sig-name descname"><span class="pre">voltage</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ismartgate.common.GogoGate2Door.voltage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.common.GogoGate2InfoResponse">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">GogoGate2InfoResponse</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apiversion</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remoteaccessenabled</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remoteaccess</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">firmwareversion</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">door1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.GogoGate2Door" title="ismartgate.common.GogoGate2Door"><span class="pre">ismartgate.common.GogoGate2Door</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">door2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.GogoGate2Door" title="ismartgate.common.GogoGate2Door"><span class="pre">ismartgate.common.GogoGate2Door</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">door3</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.GogoGate2Door" title="ismartgate.common.GogoGate2Door"><span class="pre">ismartgate.common.GogoGate2Door</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.Network" title="ismartgate.common.Network"><span class="pre">ismartgate.common.Network</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">wifi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.Wifi" title="ismartgate.common.Wifi"><span class="pre">ismartgate.common.Wifi</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">gogogatename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apicode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.Outputs" title="ismartgate.common.Outputs"><span class="pre">ismartgate.common.Outputs</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#GogoGate2InfoResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.GogoGate2InfoResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ismartgate.common.AbstractInfoResponse" title="ismartgate.common.AbstractInfoResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.common.AbstractInfoResponse</span></code></a></p>
+<p>Response from gogogate2 api calls.</p>
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2InfoResponse.apicode">
+<code class="sig-name descname"><span class="pre">apicode</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#ismartgate.common.GogoGate2InfoResponse.apicode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2InfoResponse.door1">
+<code class="sig-name descname"><span class="pre">door1</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.GogoGate2Door" title="ismartgate.common.GogoGate2Door"><span class="pre">ismartgate.common.GogoGate2Door</span></a></em><a class="headerlink" href="#ismartgate.common.GogoGate2InfoResponse.door1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2InfoResponse.door2">
+<code class="sig-name descname"><span class="pre">door2</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.GogoGate2Door" title="ismartgate.common.GogoGate2Door"><span class="pre">ismartgate.common.GogoGate2Door</span></a></em><a class="headerlink" href="#ismartgate.common.GogoGate2InfoResponse.door2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2InfoResponse.door3">
+<code class="sig-name descname"><span class="pre">door3</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.GogoGate2Door" title="ismartgate.common.GogoGate2Door"><span class="pre">ismartgate.common.GogoGate2Door</span></a></em><a class="headerlink" href="#ismartgate.common.GogoGate2InfoResponse.door3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2InfoResponse.gogogatename">
+<code class="sig-name descname"><span class="pre">gogogatename</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#ismartgate.common.GogoGate2InfoResponse.gogogatename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.GogoGate2InfoResponse.outputs">
+<code class="sig-name descname"><span class="pre">outputs</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.Outputs" title="ismartgate.common.Outputs"><span class="pre">ismartgate.common.Outputs</span></a></em><a class="headerlink" href="#ismartgate.common.GogoGate2InfoResponse.outputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.common.ISmartGateActivateResponse">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">ISmartGateActivateResponse</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#ISmartGateActivateResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.ISmartGateActivateResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ismartgate.common.AbstractActivateResponse" title="ismartgate.common.AbstractActivateResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.common.AbstractActivateResponse</span></code></a></p>
+<p>iSmartGate response from activate calls.</p>
+<dl class="py attribute">
+<dt id="ismartgate.common.ISmartGateActivateResponse.result">
+<code class="sig-name descname"><span class="pre">result</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.ISmartGateActivateResponse.result" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.common.ISmartGateDoor">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">ISmartGateDoor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">door_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permission</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.DoorMode" title="ismartgate.common.DoorMode"><span class="pre">ismartgate.common.DoorMode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.DoorStatus" title="ismartgate.common.DoorStatus"><span class="pre">ismartgate.common.DoorStatus</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensorid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apicode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">customimage</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#ISmartGateDoor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.ISmartGateDoor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ismartgate.common.AbstractDoor" title="ismartgate.common.AbstractDoor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.common.AbstractDoor</span></code></a></p>
+<p>Door object.</p>
+<dl class="py attribute">
+<dt id="ismartgate.common.ISmartGateDoor.apicode">
+<code class="sig-name descname"><span class="pre">apicode</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#ismartgate.common.ISmartGateDoor.apicode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.ISmartGateDoor.customimage">
+<code class="sig-name descname"><span class="pre">customimage</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.ISmartGateDoor.customimage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.ISmartGateDoor.enabled">
+<code class="sig-name descname"><span class="pre">enabled</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.ISmartGateDoor.enabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.common.ISmartGateInfoResponse">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">ISmartGateInfoResponse</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apiversion</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remoteaccessenabled</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remoteaccess</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">firmwareversion</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">door1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.ISmartGateDoor" title="ismartgate.common.ISmartGateDoor"><span class="pre">ismartgate.common.ISmartGateDoor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">door2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.ISmartGateDoor" title="ismartgate.common.ISmartGateDoor"><span class="pre">ismartgate.common.ISmartGateDoor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">door3</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.ISmartGateDoor" title="ismartgate.common.ISmartGateDoor"><span class="pre">ismartgate.common.ISmartGateDoor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.Network" title="ismartgate.common.Network"><span class="pre">ismartgate.common.Network</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">wifi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.Wifi" title="ismartgate.common.Wifi"><span class="pre">ismartgate.common.Wifi</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ismartgatename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newfirmware</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#ISmartGateInfoResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.ISmartGateInfoResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ismartgate.common.AbstractInfoResponse" title="ismartgate.common.AbstractInfoResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.common.AbstractInfoResponse</span></code></a></p>
+<p>Response from iSmartGate info calls.</p>
+<dl class="py attribute">
+<dt id="ismartgate.common.ISmartGateInfoResponse.door1">
+<code class="sig-name descname"><span class="pre">door1</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.ISmartGateDoor" title="ismartgate.common.ISmartGateDoor"><span class="pre">ismartgate.common.ISmartGateDoor</span></a></em><a class="headerlink" href="#ismartgate.common.ISmartGateInfoResponse.door1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.ISmartGateInfoResponse.door2">
+<code class="sig-name descname"><span class="pre">door2</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.ISmartGateDoor" title="ismartgate.common.ISmartGateDoor"><span class="pre">ismartgate.common.ISmartGateDoor</span></a></em><a class="headerlink" href="#ismartgate.common.ISmartGateInfoResponse.door2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.ISmartGateInfoResponse.door3">
+<code class="sig-name descname"><span class="pre">door3</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#ismartgate.common.ISmartGateDoor" title="ismartgate.common.ISmartGateDoor"><span class="pre">ismartgate.common.ISmartGateDoor</span></a></em><a class="headerlink" href="#ismartgate.common.ISmartGateInfoResponse.door3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.ISmartGateInfoResponse.ismartgatename">
+<code class="sig-name descname"><span class="pre">ismartgatename</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#ismartgate.common.ISmartGateInfoResponse.ismartgatename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.ISmartGateInfoResponse.lang">
+<code class="sig-name descname"><span class="pre">lang</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#ismartgate.common.ISmartGateInfoResponse.lang" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.ISmartGateInfoResponse.newfirmware">
+<code class="sig-name descname"><span class="pre">newfirmware</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.ISmartGateInfoResponse.newfirmware" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.ISmartGateInfoResponse.pin">
+<code class="sig-name descname"><span class="pre">pin</span></code><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#ismartgate.common.ISmartGateInfoResponse.pin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="ismartgate.common.InvalidApiCodeException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">InvalidApiCodeException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#InvalidApiCodeException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.InvalidApiCodeException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ismartgate.common.ApiError" title="ismartgate.common.ApiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.common.ApiError</span></code></a></p>
+<p>Invalid api code exception.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="ismartgate.common.InvalidDoorException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">InvalidDoorException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">door_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#InvalidDoorException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.InvalidDoorException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception when door is invalid.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="ismartgate.common.InvalidOptionException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">InvalidOptionException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#InvalidOptionException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.InvalidOptionException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ismartgate.common.ApiError" title="ismartgate.common.ApiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.common.ApiError</span></code></a></p>
+<p>Invalid option exception.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.common.Network">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">Network</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#Network"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.Network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Network object.</p>
+<dl class="py attribute">
+<dt id="ismartgate.common.Network.ip">
+<code class="sig-name descname"><span class="pre">ip</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#ismartgate.common.Network.ip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.common.Outputs">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">Outputs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output3</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#Outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.Outputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Outputs object.</p>
+<dl class="py attribute">
+<dt id="ismartgate.common.Outputs.output1">
+<code class="sig-name descname"><span class="pre">output1</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.Outputs.output1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.Outputs.output2">
+<code class="sig-name descname"><span class="pre">output2</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.Outputs.output2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.Outputs.output3">
+<code class="sig-name descname"><span class="pre">output3</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#ismartgate.common.Outputs.output3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.common.RequestOption">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">RequestOption</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#RequestOption"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.RequestOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Request option.</p>
+<dl class="py attribute">
+<dt id="ismartgate.common.RequestOption.ACTIVATE">
+<code class="sig-name descname"><span class="pre">ACTIVATE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'activate'</span></em><a class="headerlink" href="#ismartgate.common.RequestOption.ACTIVATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.RequestOption.INFO">
+<code class="sig-name descname"><span class="pre">INFO</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'info'</span></em><a class="headerlink" href="#ismartgate.common.RequestOption.INFO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="ismartgate.common.TagException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">TagException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#TagException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.TagException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>General exception for tags.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="ismartgate.common.TagNotFoundException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">TagNotFoundException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#TagNotFoundException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.TagNotFoundException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ismartgate.common.TagException" title="ismartgate.common.TagException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.common.TagException</span></code></a></p>
+<p>Thrown when encountering an unexpected type.</p>
+<p>Initialize.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="ismartgate.common.TextEmptyException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">TextEmptyException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#TextEmptyException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.TextEmptyException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ismartgate.common.TagException" title="ismartgate.common.TagException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.common.TagException</span></code></a></p>
+<p>Thrown when encountering an unexpected type.</p>
+<p>Initialize.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.common.TransitionDoorStatus">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">TransitionDoorStatus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#TransitionDoorStatus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.TransitionDoorStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Presumed door status.</p>
+<dl class="py attribute">
+<dt id="ismartgate.common.TransitionDoorStatus.CLOSING">
+<code class="sig-name descname"><span class="pre">CLOSING</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'closing'</span></em><a class="headerlink" href="#ismartgate.common.TransitionDoorStatus.CLOSING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.TransitionDoorStatus.OPENING">
+<code class="sig-name descname"><span class="pre">OPENING</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'opening'</span></em><a class="headerlink" href="#ismartgate.common.TransitionDoorStatus.OPENING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="ismartgate.common.UnexpectedTypeException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">UnexpectedTypeException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">GenericType</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#UnexpectedTypeException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.UnexpectedTypeException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Thrown when encountering an unexpected type.</p>
+<p>Initialize.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.common.Wifi">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">Wifi</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SSID</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linkquality</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/common.html#Wifi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.Wifi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Wifi object.</p>
+<dl class="py attribute">
+<dt id="ismartgate.common.Wifi.SSID">
+<code class="sig-name descname"><span class="pre">SSID</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ismartgate.common.Wifi.SSID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.Wifi.linkquality">
+<code class="sig-name descname"><span class="pre">linkquality</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ismartgate.common.Wifi.linkquality" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.common.Wifi.signal">
+<code class="sig-name descname"><span class="pre">signal</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ismartgate.common.Wifi.signal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.element_int_or_raise">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">element_int_or_raise</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">xml.etree.ElementTree.Element</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/ismartgate/common.html#element_int_or_raise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.element_int_or_raise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get element int from xml element.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.element_or_none">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">element_or_none</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">xml.etree.ElementTree.Element</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">xml.etree.ElementTree.Element</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/ismartgate/common.html#element_or_none"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.element_or_none" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get element from xml element.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.element_or_raise">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">element_or_raise</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">xml.etree.ElementTree.Element</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">xml.etree.ElementTree.Element</span><a class="reference internal" href="_modules/ismartgate/common.html#element_or_raise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.element_or_raise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get element from xml element.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.element_text_or_none">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">element_text_or_none</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">xml.etree.ElementTree.Element</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/ismartgate/common.html#element_text_or_none"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.element_text_or_none" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get element text from xml element.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.element_text_or_raise">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">element_text_or_raise</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">xml.etree.ElementTree.Element</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="reference internal" href="_modules/ismartgate/common.html#element_text_or_raise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.element_text_or_raise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get element text from xml element.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.element_to_api_error">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">element_to_api_error</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">xml.etree.ElementTree.Element</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#ismartgate.common.ApiError" title="ismartgate.common.ApiError"><span class="pre">ismartgate.common.ApiError</span></a><a class="reference internal" href="_modules/ismartgate/common.html#element_to_api_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.element_to_api_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get api error from xml element.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.element_to_gogogate2_activate_response">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">element_to_gogogate2_activate_response</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">xml.etree.ElementTree.Element</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#ismartgate.common.GogoGate2ActivateResponse" title="ismartgate.common.GogoGate2ActivateResponse"><span class="pre">ismartgate.common.GogoGate2ActivateResponse</span></a><a class="reference internal" href="_modules/ismartgate/common.html#element_to_gogogate2_activate_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.element_to_gogogate2_activate_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get response from xml element.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.element_to_gogogate2_info_response">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">element_to_gogogate2_info_response</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">xml.etree.ElementTree.Element</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#ismartgate.common.GogoGate2InfoResponse" title="ismartgate.common.GogoGate2InfoResponse"><span class="pre">ismartgate.common.GogoGate2InfoResponse</span></a><a class="reference internal" href="_modules/ismartgate/common.html#element_to_gogogate2_info_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.element_to_gogogate2_info_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get response from xml element.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.element_to_ismartgate_activate_response">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">element_to_ismartgate_activate_response</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">xml.etree.ElementTree.Element</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#ismartgate.common.ISmartGateActivateResponse" title="ismartgate.common.ISmartGateActivateResponse"><span class="pre">ismartgate.common.ISmartGateActivateResponse</span></a><a class="reference internal" href="_modules/ismartgate/common.html#element_to_ismartgate_activate_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.element_to_ismartgate_activate_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get response from xml element.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.element_to_ismartgate_info_response">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">element_to_ismartgate_info_response</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">xml.etree.ElementTree.Element</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#ismartgate.common.ISmartGateInfoResponse" title="ismartgate.common.ISmartGateInfoResponse"><span class="pre">ismartgate.common.ISmartGateInfoResponse</span></a><a class="reference internal" href="_modules/ismartgate/common.html#element_to_ismartgate_info_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.element_to_ismartgate_info_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get response from xml element.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.enforce_type">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">enforce_type</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">GenericType</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">GenericType</span><a class="reference internal" href="_modules/ismartgate/common.html#enforce_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.enforce_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enforce a data type.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.enum_or_raise">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">enum_or_raise</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enum</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">enum.Enum</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">enum.Enum</span><a class="reference internal" href="_modules/ismartgate/common.html#enum_or_raise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.enum_or_raise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return Enum or raise exception.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.float_or_none">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">float_or_none</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/ismartgate/common.html#float_or_none"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.float_or_none" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return float or None.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.get_configured_door_by_id">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">get_configured_door_by_id</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">door_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.AbstractInfoResponse" title="ismartgate.common.AbstractInfoResponse"><span class="pre">ismartgate.common.AbstractInfoResponse</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ismartgate.common.AbstractDoor" title="ismartgate.common.AbstractDoor"><span class="pre">ismartgate.common.AbstractDoor</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/ismartgate/common.html#get_configured_door_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.get_configured_door_by_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a door from a gogogate2 response.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.get_configured_doors">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">get_configured_doors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.AbstractInfoResponse" title="ismartgate.common.AbstractInfoResponse"><span class="pre">ismartgate.common.AbstractInfoResponse</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ismartgate.common.AbstractDoor" title="ismartgate.common.AbstractDoor"><span class="pre">ismartgate.common.AbstractDoor</span></a><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">…</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/ismartgate/common.html#get_configured_doors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.get_configured_doors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a tuple of configured doors from a response.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.get_door_by_id">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">get_door_by_id</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">door_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.AbstractInfoResponse" title="ismartgate.common.AbstractInfoResponse"><span class="pre">ismartgate.common.AbstractInfoResponse</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ismartgate.common.AbstractDoor" title="ismartgate.common.AbstractDoor"><span class="pre">ismartgate.common.AbstractDoor</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/ismartgate/common.html#get_door_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.get_door_by_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a door from a gogogate2 response.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.get_doors">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">get_doors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#ismartgate.common.AbstractInfoResponse" title="ismartgate.common.AbstractInfoResponse"><span class="pre">ismartgate.common.AbstractInfoResponse</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ismartgate.common.AbstractDoor" title="ismartgate.common.AbstractDoor"><span class="pre">ismartgate.common.AbstractDoor</span></a><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">…</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/ismartgate/common.html#get_doors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.get_doors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a tuple of doors from a response.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.gogogate2_door_or_raise">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">gogogate2_door_or_raise</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">door_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">xml.etree.ElementTree.Element</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#ismartgate.common.GogoGate2Door" title="ismartgate.common.GogoGate2Door"><span class="pre">ismartgate.common.GogoGate2Door</span></a><a class="reference internal" href="_modules/ismartgate/common.html#gogogate2_door_or_raise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.gogogate2_door_or_raise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get door from xml element.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.int_or_none">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">int_or_none</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/ismartgate/common.html#int_or_none"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.int_or_none" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return int or None.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.int_or_raise">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">int_or_raise</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/ismartgate/common.html#int_or_raise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.int_or_raise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return int or raise exception.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.ismartgate_door_or_raise">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">ismartgate_door_or_raise</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">door_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">xml.etree.ElementTree.Element</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#ismartgate.common.ISmartGateDoor" title="ismartgate.common.ISmartGateDoor"><span class="pre">ismartgate.common.ISmartGateDoor</span></a><a class="reference internal" href="_modules/ismartgate/common.html#ismartgate_door_or_raise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.ismartgate_door_or_raise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get door from xml element.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.network_or_raise">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">network_or_raise</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">xml.etree.ElementTree.Element</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#ismartgate.common.Network" title="ismartgate.common.Network"><span class="pre">ismartgate.common.Network</span></a><a class="reference internal" href="_modules/ismartgate/common.html#network_or_raise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.network_or_raise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get network from xml element.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.outputs_or_raise">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">outputs_or_raise</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">xml.etree.ElementTree.Element</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#ismartgate.common.Outputs" title="ismartgate.common.Outputs"><span class="pre">ismartgate.common.Outputs</span></a><a class="reference internal" href="_modules/ismartgate/common.html#outputs_or_raise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.outputs_or_raise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get outputs from xml element.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.str_or_none">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">str_or_none</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/ismartgate/common.html#str_or_none"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.str_or_none" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str or None.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.str_or_raise">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">str_or_raise</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="reference internal" href="_modules/ismartgate/common.html#str_or_raise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.str_or_raise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return string or raise exception.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.value_or_none">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">value_or_none</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert_fn</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">GenericType</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">GenericType</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/ismartgate/common.html#value_or_none"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.value_or_none" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a value given a specific conversion function.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.common.wifi_or_raise">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.common.</span></code><code class="sig-name descname"><span class="pre">wifi_or_raise</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">xml.etree.ElementTree.Element</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#ismartgate.common.Wifi" title="ismartgate.common.Wifi"><span class="pre">ismartgate.common.Wifi</span></a><a class="reference internal" href="_modules/ismartgate/common.html#wifi_or_raise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.common.wifi_or_raise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get wifi from xml element.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ismartgate.const">
+<span id="ismartgate-const-module"></span><h2>ismartgate.const module<a class="headerlink" href="#module-ismartgate.const" title="Permalink to this headline">¶</a></h2>
+<p>Constants for gate devices</p>
+<dl class="py class">
+<dt id="ismartgate.const.GogoGate2ApiErrorCode">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.const.</span></code><code class="sig-name descname"><span class="pre">GogoGate2ApiErrorCode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/const.html#GogoGate2ApiErrorCode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.const.GogoGate2ApiErrorCode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
+<p>Common API error codes.</p>
+<dl class="py attribute">
+<dt id="ismartgate.const.GogoGate2ApiErrorCode.CORRUPTED_DATA">
+<code class="sig-name descname"><span class="pre">CORRUPTED_DATA</span></code><em class="property"> <span class="pre">=</span> <span class="pre">11</span></em><a class="headerlink" href="#ismartgate.const.GogoGate2ApiErrorCode.CORRUPTED_DATA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.const.GogoGate2ApiErrorCode.CREDENTIALS_INCORRECT">
+<code class="sig-name descname"><span class="pre">CREDENTIALS_INCORRECT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#ismartgate.const.GogoGate2ApiErrorCode.CREDENTIALS_INCORRECT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.const.GogoGate2ApiErrorCode.CREDENTIALS_NOT_SET">
+<code class="sig-name descname"><span class="pre">CREDENTIALS_NOT_SET</span></code><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#ismartgate.const.GogoGate2ApiErrorCode.CREDENTIALS_NOT_SET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.const.GogoGate2ApiErrorCode.DOOR_NOT_SET">
+<code class="sig-name descname"><span class="pre">DOOR_NOT_SET</span></code><em class="property"> <span class="pre">=</span> <span class="pre">8</span></em><a class="headerlink" href="#ismartgate.const.GogoGate2ApiErrorCode.DOOR_NOT_SET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.const.GogoGate2ApiErrorCode.INVALID_API_CODE">
+<code class="sig-name descname"><span class="pre">INVALID_API_CODE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">18</span></em><a class="headerlink" href="#ismartgate.const.GogoGate2ApiErrorCode.INVALID_API_CODE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.const.GogoGate2ApiErrorCode.INVALID_DOOR">
+<code class="sig-name descname"><span class="pre">INVALID_DOOR</span></code><em class="property"> <span class="pre">=</span> <span class="pre">5</span></em><a class="headerlink" href="#ismartgate.const.GogoGate2ApiErrorCode.INVALID_DOOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.const.GogoGate2ApiErrorCode.INVALID_OPTION">
+<code class="sig-name descname"><span class="pre">INVALID_OPTION</span></code><em class="property"> <span class="pre">=</span> <span class="pre">9</span></em><a class="headerlink" href="#ismartgate.const.GogoGate2ApiErrorCode.INVALID_OPTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.const.GogoGate2ApiErrorCode.INVALID_TOKEN">
+<code class="sig-name descname"><span class="pre">INVALID_TOKEN</span></code><em class="property"> <span class="pre">=</span> <span class="pre">998</span></em><a class="headerlink" href="#ismartgate.const.GogoGate2ApiErrorCode.INVALID_TOKEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.const.GogoGate2ApiErrorCode.TOKEN_NOT_SET">
+<code class="sig-name descname"><span class="pre">TOKEN_NOT_SET</span></code><em class="property"> <span class="pre">=</span> <span class="pre">999</span></em><a class="headerlink" href="#ismartgate.const.GogoGate2ApiErrorCode.TOKEN_NOT_SET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.const.ISmartGateApiErrorCode">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.const.</span></code><code class="sig-name descname"><span class="pre">ISmartGateApiErrorCode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate/const.html#ISmartGateApiErrorCode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.const.ISmartGateApiErrorCode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
+<p>Common API error codes.</p>
+<dl class="py attribute">
+<dt id="ismartgate.const.ISmartGateApiErrorCode.CORRUPTED_DATA">
+<code class="sig-name descname"><span class="pre">CORRUPTED_DATA</span></code><em class="property"> <span class="pre">=</span> <span class="pre">999</span></em><a class="headerlink" href="#ismartgate.const.ISmartGateApiErrorCode.CORRUPTED_DATA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.const.ISmartGateApiErrorCode.CREDENTIALS_INCORRECT">
+<code class="sig-name descname"><span class="pre">CREDENTIALS_INCORRECT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">11</span></em><a class="headerlink" href="#ismartgate.const.ISmartGateApiErrorCode.CREDENTIALS_INCORRECT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.const.ISmartGateApiErrorCode.CREDENTIALS_NOT_SET">
+<code class="sig-name descname"><span class="pre">CREDENTIALS_NOT_SET</span></code><em class="property"> <span class="pre">=</span> <span class="pre">22</span></em><a class="headerlink" href="#ismartgate.const.ISmartGateApiErrorCode.CREDENTIALS_NOT_SET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.const.ISmartGateApiErrorCode.DOOR_NOT_SET">
+<code class="sig-name descname"><span class="pre">DOOR_NOT_SET</span></code><em class="property"> <span class="pre">=</span> <span class="pre">8</span></em><a class="headerlink" href="#ismartgate.const.ISmartGateApiErrorCode.DOOR_NOT_SET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.const.ISmartGateApiErrorCode.INVALID_API_CODE">
+<code class="sig-name descname"><span class="pre">INVALID_API_CODE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">10</span></em><a class="headerlink" href="#ismartgate.const.ISmartGateApiErrorCode.INVALID_API_CODE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.const.ISmartGateApiErrorCode.INVALID_DOOR">
+<code class="sig-name descname"><span class="pre">INVALID_DOOR</span></code><em class="property"> <span class="pre">=</span> <span class="pre">997</span></em><a class="headerlink" href="#ismartgate.const.ISmartGateApiErrorCode.INVALID_DOOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.const.ISmartGateApiErrorCode.INVALID_OPTION">
+<code class="sig-name descname"><span class="pre">INVALID_OPTION</span></code><em class="property"> <span class="pre">=</span> <span class="pre">9</span></em><a class="headerlink" href="#ismartgate.const.ISmartGateApiErrorCode.INVALID_OPTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.const.ISmartGateApiErrorCode.INVALID_TOKEN">
+<code class="sig-name descname"><span class="pre">INVALID_TOKEN</span></code><em class="property"> <span class="pre">=</span> <span class="pre">998</span></em><a class="headerlink" href="#ismartgate.const.ISmartGateApiErrorCode.INVALID_TOKEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.const.ISmartGateApiErrorCode.TOKEN_NOT_SET">
+<code class="sig-name descname"><span class="pre">TOKEN_NOT_SET</span></code><em class="property"> <span class="pre">=</span> <span class="pre">21</span></em><a class="headerlink" href="#ismartgate.const.ISmartGateApiErrorCode.TOKEN_NOT_SET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ismartgate">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ismartgate" title="Permalink to this headline">¶</a></h2>
+<p>Base package for gate API code.</p>
+<dl class="py class">
+<dt id="ismartgate.AbstractGateApi">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.</span></code><code class="sig-name descname"><span class="pre">AbstractGateApi</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_cipher</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">ApiCipherType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_timeout</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">datetime.timedelta</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">datetime.timedelta(seconds=20)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition_status_timeout</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">datetime.timedelta</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">datetime.timedelta(seconds=55)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">httpx_async_client</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">httpx.AsyncClient</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate.html#AbstractGateApi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.AbstractGateApi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">ismartgate.ApiCipherType</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">ismartgate.InfoResponseType</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">ismartgate.ActivateResponseType</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>API capable of communicating with a gogogate2 devices.</p>
+<p>Initialize the object.</p>
+<dl class="py attribute">
+<dt id="ismartgate.AbstractGateApi.API_URL_TEMPLATE">
+<code class="sig-name descname"><span class="pre">API_URL_TEMPLATE</span></code><em class="property"><span class="pre">:</span> <span class="pre">Final</span></em><em class="property"> <span class="pre">=</span> <span class="pre">'http://%s/api.php'</span></em><a class="headerlink" href="#ismartgate.AbstractGateApi.API_URL_TEMPLATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.AbstractGateApi.DEFAULT_REQUEST_TIMEOUT">
+<code class="sig-name descname"><span class="pre">DEFAULT_REQUEST_TIMEOUT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">datetime.timedelta(seconds=20)</span></em><a class="headerlink" href="#ismartgate.AbstractGateApi.DEFAULT_REQUEST_TIMEOUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="ismartgate.AbstractGateApi.DEFAULT_TRANSITION_STATUS_TIMEOUT">
+<code class="sig-name descname"><span class="pre">DEFAULT_TRANSITION_STATUS_TIMEOUT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">datetime.timedelta(seconds=55)</span></em><a class="headerlink" href="#ismartgate.AbstractGateApi.DEFAULT_TRANSITION_STATUS_TIMEOUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="ismartgate.AbstractGateApi.async_activate">
+<em class="property"><span class="pre">abstract</span> <span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">async_activate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">door_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">ActivateResponseType</span><a class="reference internal" href="_modules/ismartgate.html#AbstractGateApi.async_activate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.AbstractGateApi.async_activate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a command to open/close/stop the door.</p>
+<p>Devices do not have a status for opening or closing. So running
+this method during an action will stop the door. It’s recommended you
+use open_door() or close_door() as those methods check the status
+before running and run if needed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ismartgate.AbstractGateApi.async_close_door">
+<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">async_close_door</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">door_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">consider_transitional_states</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="reference internal" href="_modules/ismartgate.html#AbstractGateApi.async_close_door"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.AbstractGateApi.async_close_door" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close a door.</p>
+<p>:return True if close command sent, False otherwise.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ismartgate.AbstractGateApi.async_get_door_statuses">
+<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">async_get_door_statuses</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_transitional_status</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ismartgate.common.DoorStatus" title="ismartgate.common.DoorStatus"><span class="pre">ismartgate.common.DoorStatus</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#ismartgate.common.TransitionDoorStatus" title="ismartgate.common.TransitionDoorStatus"><span class="pre">ismartgate.common.TransitionDoorStatus</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/ismartgate.html#AbstractGateApi.async_get_door_statuses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.AbstractGateApi.async_get_door_statuses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get configured door statuses.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ismartgate.AbstractGateApi.async_get_door_statuses_from_info">
+<code class="sig-name descname"><span class="pre">async_get_door_statuses_from_info</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">InfoResponseType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_transitional_status</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ismartgate.common.DoorStatus" title="ismartgate.common.DoorStatus"><span class="pre">ismartgate.common.DoorStatus</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#ismartgate.common.TransitionDoorStatus" title="ismartgate.common.TransitionDoorStatus"><span class="pre">ismartgate.common.TransitionDoorStatus</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/ismartgate.html#AbstractGateApi.async_get_door_statuses_from_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.AbstractGateApi.async_get_door_statuses_from_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get configured door statuses from an existing info response.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ismartgate.AbstractGateApi.async_info">
+<em class="property"><span class="pre">abstract</span> <span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">async_info</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">InfoResponseType</span><a class="reference internal" href="_modules/ismartgate.html#AbstractGateApi.async_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.AbstractGateApi.async_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get info about the device and doors.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ismartgate.AbstractGateApi.async_open_door">
+<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">async_open_door</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">door_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">consider_transitional_states</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="reference internal" href="_modules/ismartgate.html#AbstractGateApi.async_open_door"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.AbstractGateApi.async_open_door" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a door.</p>
+<p>:return True if open command sent, False otherwise.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ismartgate.AbstractGateApi.cipher">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">cipher</span></code><a class="headerlink" href="#ismartgate.AbstractGateApi.cipher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the cipher.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ismartgate.AbstractGateApi.host">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">host</span></code><a class="headerlink" href="#ismartgate.AbstractGateApi.host" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the host.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ismartgate.AbstractGateApi.password">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">password</span></code><a class="headerlink" href="#ismartgate.AbstractGateApi.password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the password.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ismartgate.AbstractGateApi.username">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">username</span></code><a class="headerlink" href="#ismartgate.AbstractGateApi.username" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the username.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.ApiCipher">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.</span></code><code class="sig-name descname"><span class="pre">ApiCipher</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate.html#ApiCipher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.ApiCipher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>AES/CBC/PKCS5Padding algorithm.</p>
+<p>Initialize the object.</p>
+<dl class="py method">
+<dt id="ismartgate.ApiCipher.decrypt">
+<code class="sig-name descname"><span class="pre">decrypt</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="reference internal" href="_modules/ismartgate.html#ApiCipher.decrypt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.ApiCipher.decrypt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decrypt content.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ismartgate.ApiCipher.encrypt">
+<code class="sig-name descname"><span class="pre">encrypt</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_vector</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="reference internal" href="_modules/ismartgate.html#ApiCipher.encrypt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.ApiCipher.encrypt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encrypt content.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ismartgate.ApiCipher.pad_pkcs5">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">pad_pkcs5</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="reference internal" href="_modules/ismartgate.html#ApiCipher.pad_pkcs5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.ApiCipher.pad_pkcs5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add padding to bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ismartgate.ApiCipher.unpad_pkcs5">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">unpad_pkcs5</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bytes</span><a class="reference internal" href="_modules/ismartgate.html#ApiCipher.unpad_pkcs5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.ApiCipher.unpad_pkcs5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove padding from bytes.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.GogoGate2Api">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.</span></code><code class="sig-name descname"><span class="pre">GogoGate2Api</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_timeout</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">datetime.timedelta</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">datetime.timedelta(seconds=20)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition_status_timeout</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">datetime.timedelta</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">datetime.timedelta(seconds=55)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">httpx_async_client</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">httpx.AsyncClient</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate.html#GogoGate2Api"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.GogoGate2Api" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ismartgate.AbstractGateApi" title="ismartgate.AbstractGateApi"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.AbstractGateApi</span></code></a>[<a class="reference internal" href="#ismartgate.GogoGate2ApiCipher" title="ismartgate.GogoGate2ApiCipher"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.GogoGate2ApiCipher</span></code></a>, <a class="reference internal" href="#ismartgate.common.GogoGate2InfoResponse" title="ismartgate.common.GogoGate2InfoResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.common.GogoGate2InfoResponse</span></code></a>, <a class="reference internal" href="#ismartgate.common.GogoGate2ActivateResponse" title="ismartgate.common.GogoGate2ActivateResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.common.GogoGate2ActivateResponse</span></code></a>]</p>
+<p>API for interacting with GogoGate2 devices.</p>
+<p>Initialize the object.</p>
+<dl class="py method">
+<dt id="ismartgate.GogoGate2Api.async_activate">
+<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">async_activate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">door_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#ismartgate.common.GogoGate2ActivateResponse" title="ismartgate.common.GogoGate2ActivateResponse"><span class="pre">ismartgate.common.GogoGate2ActivateResponse</span></a><a class="reference internal" href="_modules/ismartgate.html#GogoGate2Api.async_activate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.GogoGate2Api.async_activate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a command to open/close/stop the door.</p>
+<p>Devices do not have a status for opening or closing. So running
+this method during an action will stop the door. It’s recommended you
+use open_door() or close_door() as those methods check the status
+before running and run if needed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ismartgate.GogoGate2Api.async_info">
+<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">async_info</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#ismartgate.common.GogoGate2InfoResponse" title="ismartgate.common.GogoGate2InfoResponse"><span class="pre">ismartgate.common.GogoGate2InfoResponse</span></a><a class="reference internal" href="_modules/ismartgate.html#GogoGate2Api.async_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.GogoGate2Api.async_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get info about the device and doors.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.GogoGate2ApiCipher">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.</span></code><code class="sig-name descname"><span class="pre">GogoGate2ApiCipher</span></code><a class="reference internal" href="_modules/ismartgate.html#GogoGate2ApiCipher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.GogoGate2ApiCipher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ismartgate.ApiCipher" title="ismartgate.ApiCipher"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.ApiCipher</span></code></a></p>
+<p>Cipher for GogoGate2 devices.</p>
+<p>Initialize the object.</p>
+<dl class="py attribute">
+<dt id="ismartgate.GogoGate2ApiCipher.SHARED_SECRET">
+<code class="sig-name descname"><span class="pre">SHARED_SECRET</span></code><em class="property"><span class="pre">:</span> <span class="pre">Final</span></em><em class="property"> <span class="pre">=</span> <span class="pre">'0e3b7%i1X9&#64;54cAf'</span></em><a class="headerlink" href="#ismartgate.GogoGate2ApiCipher.SHARED_SECRET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.ISmartGateApi">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.</span></code><code class="sig-name descname"><span class="pre">ISmartGateApi</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_timeout</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">datetime.timedelta</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">datetime.timedelta(seconds=20)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition_status_timeout</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">datetime.timedelta</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">datetime.timedelta(seconds=55)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">httpx_async_client</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">httpx.AsyncClient</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate.html#ISmartGateApi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.ISmartGateApi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ismartgate.AbstractGateApi" title="ismartgate.AbstractGateApi"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.AbstractGateApi</span></code></a>[<a class="reference internal" href="#ismartgate.ISmartGateApiCipher" title="ismartgate.ISmartGateApiCipher"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.ISmartGateApiCipher</span></code></a>, <a class="reference internal" href="#ismartgate.common.ISmartGateInfoResponse" title="ismartgate.common.ISmartGateInfoResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.common.ISmartGateInfoResponse</span></code></a>, <a class="reference internal" href="#ismartgate.common.ISmartGateActivateResponse" title="ismartgate.common.ISmartGateActivateResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.common.ISmartGateActivateResponse</span></code></a>]</p>
+<p>API for interacting with iSmartGate devices.</p>
+<p>Initialize the object.</p>
+<dl class="py method">
+<dt id="ismartgate.ISmartGateApi.async_activate">
+<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">async_activate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">door_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#ismartgate.common.ISmartGateActivateResponse" title="ismartgate.common.ISmartGateActivateResponse"><span class="pre">ismartgate.common.ISmartGateActivateResponse</span></a><a class="reference internal" href="_modules/ismartgate.html#ISmartGateApi.async_activate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.ISmartGateApi.async_activate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a command to open/close/stop the door.</p>
+<p>Devices do not have a status for opening or closing. So running
+this method during an action will stop the door. It’s recommended you
+use open_door() or close_door() as those methods check the status
+before running and run if needed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ismartgate.ISmartGateApi.async_info">
+<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">async_info</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#ismartgate.common.ISmartGateInfoResponse" title="ismartgate.common.ISmartGateInfoResponse"><span class="pre">ismartgate.common.ISmartGateInfoResponse</span></a><a class="reference internal" href="_modules/ismartgate.html#ISmartGateApi.async_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.ISmartGateApi.async_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get info about the device and doors.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ismartgate.ISmartGateApiCipher">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ismartgate.</span></code><code class="sig-name descname"><span class="pre">ISmartGateApiCipher</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate.html#ISmartGateApiCipher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.ISmartGateApiCipher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ismartgate.ApiCipher" title="ismartgate.ApiCipher"><code class="xref py py-class docutils literal notranslate"><span class="pre">ismartgate.ApiCipher</span></code></a></p>
+<p>Cipher for iSmartGate devices.</p>
+<p>Initialize the object.</p>
+<dl class="py attribute">
+<dt id="ismartgate.ISmartGateApiCipher.RAW_TOKEN_FORMAT">
+<code class="sig-name descname"><span class="pre">RAW_TOKEN_FORMAT</span></code><em class="property"><span class="pre">:</span> <span class="pre">Final</span></em><em class="property"> <span class="pre">=</span> <span class="pre">'%s&#64;ismartgate'</span></em><a class="headerlink" href="#ismartgate.ISmartGateApiCipher.RAW_TOKEN_FORMAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="ismartgate.ISmartGateApiCipher.token">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">token</span></code><a class="headerlink" href="#ismartgate.ISmartGateApiCipher.token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the token.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="ismartgate.get_module_version">
+<code class="sig-prename descclassname"><span class="pre">ismartgate.</span></code><code class="sig-name descname"><span class="pre">get_module_version</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ismartgate.html#get_module_version"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ismartgate.get_module_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, J. Nick Koston.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

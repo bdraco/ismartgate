@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>ismartgate.cli &mdash; ismartgate 0.9.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ismartgate
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#stable-release">Stable release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#from-sources">From sources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Package modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ismartgate.html">ismartgate package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ismartgate.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ismartgate.html#module-ismartgate.cli">ismartgate.cli module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ismartgate.html#module-ismartgate.common">ismartgate.common module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ismartgate.html#module-ismartgate.const">ismartgate.const module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ismartgate.html#module-ismartgate">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing.html#deploying">Deploying</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ismartgate</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../ismartgate.html">ismartgate</a> &raquo;</li>
+        
+      <li>ismartgate.cli</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for ismartgate.cli</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;CLI for gate devices.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">unique</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+<span class="kn">from</span> <span class="nn">getpass</span> <span class="kn">import</span> <span class="n">getpass</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">cast</span>
+
+<span class="kn">import</span> <span class="nn">click</span>
+<span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Final</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">AbstractGateApi</span><span class="p">,</span> <span class="n">GogoGate2Api</span><span class="p">,</span> <span class="n">ISmartGateApi</span>
+<span class="kn">from</span> <span class="nn">.common</span> <span class="kn">import</span> <span class="n">EnhancedJSONEncoder</span>
+
+<span class="n">API</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="s2">&quot;api&quot;</span>
+<span class="n">DEVICE_TYPE</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="s2">&quot;device_type&quot;</span>
+<span class="n">PRETTY_PRINT</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">pprint</span><span class="o">.</span><span class="n">PrettyPrinter</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="coro"><a class="viewcode-back" href="../../ismartgate.html#ismartgate.cli.coro">[docs]</a><span class="k">def</span> <span class="nf">coro</span><span class="p">(</span><span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Wrap a coroutine in a async runner.&quot;&quot;&quot;</span>
+
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">wrapper</span></div>
+
+
+<span class="k">def</span> <span class="nf">_echo_response</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">EnhancedJSONEncoder</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="DeviceType"><a class="viewcode-back" href="../../ismartgate.html#ismartgate.cli.DeviceType">[docs]</a><span class="nd">@unique</span>
+<span class="k">class</span> <span class="nc">DeviceType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Device types.&quot;&quot;&quot;</span>
+
+    <span class="n">GOGOGATE2</span> <span class="o">=</span> <span class="s2">&quot;gogogate2&quot;</span>
+    <span class="n">ISMARTGATE</span> <span class="o">=</span> <span class="s2">&quot;ismartgate&quot;</span></div>
+
+
+<div class="viewcode-block" id="Option"><a class="viewcode-back" href="../../ismartgate.html#ismartgate.cli.Option">[docs]</a><span class="nd">@unique</span>
+<span class="k">class</span> <span class="nc">Option</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;CLI options.&quot;&quot;&quot;</span>
+
+    <span class="n">HOST</span> <span class="o">=</span> <span class="s2">&quot;--host&quot;</span>
+    <span class="n">USERNAME</span> <span class="o">=</span> <span class="s2">&quot;--username&quot;</span>
+    <span class="n">PASSWORD</span> <span class="o">=</span> <span class="s2">&quot;--password&quot;</span>  <span class="c1"># nosec</span>
+    <span class="n">DEVICE_TYPE</span> <span class="o">=</span> <span class="s2">&quot;--device-type&quot;</span></div>
+
+
+<div class="viewcode-block" id="Command"><a class="viewcode-back" href="../../ismartgate.html#ismartgate.cli.Command">[docs]</a><span class="nd">@unique</span>
+<span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Device actions.&quot;&quot;&quot;</span>
+
+    <span class="n">OPEN</span> <span class="o">=</span> <span class="s2">&quot;open&quot;</span>
+    <span class="n">CLOSE</span> <span class="o">=</span> <span class="s2">&quot;close&quot;</span>
+    <span class="n">INFO</span> <span class="o">=</span> <span class="s2">&quot;info&quot;</span></div>
+
+
+<div class="viewcode-block" id="DoorArgument"><a class="viewcode-back" href="../../ismartgate.html#ismartgate.cli.DoorArgument">[docs]</a><span class="nd">@unique</span>
+<span class="k">class</span> <span class="nc">DoorArgument</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Door arguments.&quot;&quot;&quot;</span>
+
+    <span class="n">DOOR_ID</span> <span class="o">=</span> <span class="s2">&quot;door_id&quot;</span></div>
+
+
+<div class="viewcode-block" id="default_password"><a class="viewcode-back" href="../../ismartgate.html#ismartgate.cli.default_password">[docs]</a><span class="k">def</span> <span class="nf">default_password</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Get the password from user input.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Password: &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="get_context_api"><a class="viewcode-back" href="../../ismartgate.html#ismartgate.cli.get_context_api">[docs]</a><span class="k">def</span> <span class="nf">get_context_api</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbstractGateApi</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Get gate API from context.&quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">AbstractGateApi</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">obj</span><span class="p">[</span><span class="n">API</span><span class="p">])</span></div>
+
+
+<span class="nd">@click</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="n">Option</span><span class="o">.</span><span class="n">HOST</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="n">Option</span><span class="o">.</span><span class="n">USERNAME</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="n">Option</span><span class="o">.</span><span class="n">PASSWORD</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="n">default_password</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Omit for interactive prompt. Use &#39;-&#39; to read from stdin.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="n">Option</span><span class="o">.</span><span class="n">DEVICE_TYPE</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+    <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Choice</span><span class="p">([</span><span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">DeviceType</span><span class="p">],</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="n">hidden</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">version_option</span><span class="p">()</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">pass_context</span>
+<span class="k">def</span> <span class="nf">cli</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span>
+    <span class="n">host</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">device_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Interact with the device API.&quot;&quot;&quot;</span>
+    <span class="n">api_generator</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">Union</span><span class="p">[</span><span class="n">GogoGate2Api</span><span class="p">,</span> <span class="n">ISmartGateApi</span><span class="p">]]</span>
+
+    <span class="k">if</span> <span class="n">device_type</span> <span class="o">==</span> <span class="n">DeviceType</span><span class="o">.</span><span class="n">GOGOGATE2</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+        <span class="n">api_generator</span> <span class="o">=</span> <span class="n">GogoGate2Api</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">api_generator</span> <span class="o">=</span> <span class="n">ISmartGateApi</span>
+
+    <span class="k">if</span> <span class="n">password</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>  <span class="c1"># nosec</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="n">default_password</span><span class="p">()</span>
+
+    <span class="n">ctx</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="p">{</span><span class="n">API</span><span class="p">:</span> <span class="n">api_generator</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)}</span>
+
+
+<span class="nd">@cli</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">Command</span><span class="o">.</span><span class="n">INFO</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">pass_context</span>
+<span class="nd">@coro</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Get info from device.&quot;&quot;&quot;</span>
+    <span class="n">_echo_response</span><span class="p">(</span><span class="k">await</span> <span class="n">get_context_api</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span><span class="o">.</span><span class="n">async_info</span><span class="p">())</span>
+
+
+<span class="nd">@cli</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">Command</span><span class="o">.</span><span class="n">OPEN</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">argument</span><span class="p">(</span><span class="n">DoorArgument</span><span class="o">.</span><span class="n">DOOR_ID</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">pass_context</span>
+<span class="nd">@coro</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">open_door</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span> <span class="n">door_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Open the door.&quot;&quot;&quot;</span>
+    <span class="n">_echo_response</span><span class="p">(</span><span class="k">await</span> <span class="n">get_context_api</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span><span class="o">.</span><span class="n">async_open_door</span><span class="p">(</span><span class="n">door_id</span><span class="p">))</span>
+
+
+<span class="nd">@cli</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">Command</span><span class="o">.</span><span class="n">CLOSE</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">argument</span><span class="p">(</span><span class="n">DoorArgument</span><span class="o">.</span><span class="n">DOOR_ID</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">pass_context</span>
+<span class="nd">@coro</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">close_door</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span> <span class="n">door_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Close the door.&quot;&quot;&quot;</span>
+    <span class="n">_echo_response</span><span class="p">(</span><span class="k">await</span> <span class="n">get_context_api</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span><span class="o">.</span><span class="n">async_close_door</span><span class="p">(</span><span class="n">door_id</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="cli_with_defaults"><a class="viewcode-back" href="../../ismartgate.html#ismartgate.cli.cli_with_defaults">[docs]</a><span class="k">def</span> <span class="nf">cli_with_defaults</span><span class="p">(</span><span class="n">device_type</span><span class="p">:</span> <span class="n">DeviceType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Run command with default value.&quot;&quot;&quot;</span>
+    <span class="n">cli</span><span class="p">(</span>  <span class="c1"># pylint: disable=no-value-for-parameter,unexpected-keyword-arg</span>
+        <span class="n">default_map</span><span class="o">=</span><span class="p">{</span><span class="n">DEVICE_TYPE</span><span class="p">:</span> <span class="n">device_type</span><span class="o">.</span><span class="n">value</span><span class="p">}</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="gogogate2_cli"><a class="viewcode-back" href="../../ismartgate.html#ismartgate.cli.gogogate2_cli">[docs]</a><span class="k">def</span> <span class="nf">gogogate2_cli</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;GogoGate2 entrypoint.&quot;&quot;&quot;</span>
+
+    <span class="n">cli_with_defaults</span><span class="p">(</span><span class="n">DeviceType</span><span class="o">.</span><span class="n">GOGOGATE2</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ismartgate_cli"><a class="viewcode-back" href="../../ismartgate.html#ismartgate.cli.ismartgate_cli">[docs]</a><span class="k">def</span> <span class="nf">ismartgate_cli</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;iSmartGate entrypoint.&quot;&quot;&quot;</span>
+    <span class="n">cli_with_defaults</span><span class="p">(</span><span class="n">DeviceType</span><span class="o">.</span><span class="n">ISMARTGATE</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="maybe_init"><a class="viewcode-back" href="../../ismartgate.html#ismartgate.cli.maybe_init">[docs]</a><span class="k">def</span> <span class="nf">maybe_init</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Initialize the main function if needed.&quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+        <span class="n">cli</span><span class="p">()</span>  <span class="c1"># pylint: disable=no-value-for-parameter</span></div>
+
+
+<span class="n">maybe_init</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, J. Nick Koston.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
