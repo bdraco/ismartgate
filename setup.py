@@ -71,6 +71,12 @@ setup(
         "Programming Language :: Python :: 3.9",
     ],
     description="iSmartGate and GogoGate2 API",
+    entry_points={
+        "console_scripts": [
+            "ismartgate=ismartgate.cli:main",
+            "gogogate2=ismartgate.cli:main"            
+        ],
+    },    
     install_requires=requirements,
     license="MIT license",
     long_description=readme,
