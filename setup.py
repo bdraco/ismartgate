@@ -59,7 +59,7 @@ extra_requirements = {
 }
 
 setup(
-    author="J. Nick Koston",
+    author="Robbie Van Gorkom; J. Nick Koston",
     author_email="nick@koston.org",
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",

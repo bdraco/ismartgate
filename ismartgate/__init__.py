@@ -46,7 +46,7 @@ from .common import (
 )
 from .const import GogoGate2ApiErrorCode, ISmartGateApiErrorCode
 
-__author__ = "J. Nick Koston"
+__author__ = "Robbie Van Gorkom; J. Nick Koston"
 __email__ = "nick@koston.org"
 # Do not edit this string manually, always use bumpversion
 # Details in CONTRIBUTING.md

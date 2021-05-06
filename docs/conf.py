@@ -70,7 +70,7 @@ master_doc = "index"
 
 # General information about the project.
 project = u"ismartgate"
-copyright = u'2021, J. Nick Koston'
+copyright = u'2019-2020, Robbie Van Gorkom; 2021, J. Nick Koston'
 author = u"J. Nick Koston"
 
 # The version info for the project you"re documenting, acts as replacement
