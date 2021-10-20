@@ -12,7 +12,7 @@ from xml.etree.ElementTree import Element  # nosec
 from Crypto.Cipher import AES  # nosec
 from Crypto.Cipher._mode_cbc import CbcMode  # nosec
 from defusedxml import ElementTree
-from httpx import AsyncClient
+from httpx import AsyncClient, Response, RemoteProtocolError
 from typing_extensions import Final
 
 from .common import (
@@ -220,20 +220,13 @@ class AbstractGateApi(
             )
         )
 
-        client = self._httpx_async_client or AsyncClient()
-        response: Final = await client.get(
-            self._api_url,
+        response: Final = await self._async_get_with_retry_on_protocol_error(
             params={
                 "data": self._cipher.encrypt(command_str),
                 **self._get_extra_url_params(),
             },
-            timeout=self._request_timeout.seconds,
         )
         response_raw: Final = response.content.decode("utf-8")
-
-        if not self._httpx_async_client:
-            await client.aclose()
-
         try:
             # Error messages are returned unencrypted so we try to decrypt the response.
             # if that fails, then we use what was returned.
@@ -251,6 +244,22 @@ class AbstractGateApi(
             )
 
         return cast(Element, root_element)
+
+    async def _async_get_with_retry_on_protocol_error(
+        self, params: Dict[str, str]
+    ) -> Response:
+        """Request the api url, and retry if the server disconnects on the first try."""
+        client = self._httpx_async_client or AsyncClient()
+        timeout = self._request_timeout.seconds
+        url = self._api_url
+        try:
+            return await client.get(url, params=params, timeout=timeout)
+        except RemoteProtocolError:
+            # If the server disconnected without sending a response, we try again
+            return await client.get(url, params=params, timeout=timeout)
+        finally:
+            if not self._httpx_async_client:
+                await client.aclose()
 
     @abc.abstractmethod
     async def async_info(self) -> InfoResponseType:
