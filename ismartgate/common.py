@@ -52,7 +52,7 @@ class UnexpectedTypeException(Exception):
     def __init__(self, value: Any, expected: Type[GenericType]):
         """Initialize."""
         super().__init__(
-            'Expected of "%s" to be "%s" but was "%s."' % (value, expected, type(value))
+            f'Expected of "{value}" to be "{expected}" but was "{type(value)}."'
         )
         self.value: Final = value
         self.expected: Final = expected
@@ -559,4 +559,4 @@ def get_configured_door_by_id(
 
 def get_configured_doors(response: AbstractInfoResponse) -> Tuple[AbstractDoor, ...]:
     """Get a tuple of configured doors from a response."""
-    return tuple([door for door in get_doors(response) if door.name])
+    return tuple(door for door in get_doors(response) if door.name)
