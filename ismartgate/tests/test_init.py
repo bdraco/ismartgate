@@ -304,11 +304,13 @@ async def test_sensor_temperature_and_voltage(
     assert response.door1.temperature == 16.3
     assert response.door1.voltage == 40
 
-    assert response.door2.temperature is None
-    assert response.door2.voltage == 40
+    if response.door2.enabled:
+        assert response.door2.temperature is None
+        assert response.door2.voltage == 40
 
-    assert response.door3.temperature == 16.3
-    assert response.door3.voltage is None
+    if response.door3.enabled:
+        assert response.door3.temperature == 16.3
+        assert response.door3.voltage is None
 
 
 @pytest.mark.parametrize(
