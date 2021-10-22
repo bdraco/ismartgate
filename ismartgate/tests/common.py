@@ -478,11 +478,11 @@ class MockISmartGateMiniServer(AbstractMockServer[ISmartGateInfoResponse]):
                 name="",
                 gate=False,
                 mode=DoorMode.GARAGE,
-                status=DoorStatus.UNDEFINED,
+                status=DoorStatus.OPENED,
                 sensorid="0",
                 camera=False,
                 temperature=None,
-                voltage=None,
+                voltage=40,
                 sensor=False,
                 events=False
             ),
@@ -498,7 +498,7 @@ class MockISmartGateMiniServer(AbstractMockServer[ISmartGateInfoResponse]):
                 status=DoorStatus.UNDEFINED,
                 sensorid="0",
                 camera=False,
-                temperature=None,
+                temperature=16.3,
                 voltage=None,
                 sensor=False,
                 events=False
