@@ -12,7 +12,7 @@ from xml.etree.ElementTree import Element  # nosec
 from Crypto.Cipher import AES  # nosec
 from Crypto.Cipher._mode_cbc import CbcMode  # nosec
 from defusedxml import ElementTree
-from httpx import AsyncClient, Response, RemoteProtocolError
+from httpx import AsyncClient, RemoteProtocolError, Response
 from typing_extensions import Final
 
 from .common import (

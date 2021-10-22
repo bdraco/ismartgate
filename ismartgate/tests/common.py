@@ -437,7 +437,7 @@ class MockISmartGateServer(AbstractMockServer[ISmartGateInfoResponse]):
         )
 
 
-class MockISmartGateMiniServer(AbstractMockServer[ISmartGateInfoResponse]):
+class MockISmartGateMiniServer(MockISmartGateServer):
     """Test server for ISmartGate Mini"""
 
     def _get_info_data(self) -> ISmartGateInfoResponse:
@@ -447,7 +447,7 @@ class MockISmartGateMiniServer(AbstractMockServer[ISmartGateInfoResponse]):
             ismartgatename="Home",
             newfirmware=False,
             user=self.username,
-            model="GG2",
+            model="iSmartGate Mini",
             apiversion="apiversion123",
             remoteaccessenabled=False,
             remoteaccess="abcdefg12345.my-gogogate.com",
@@ -470,88 +470,39 @@ class MockISmartGateMiniServer(AbstractMockServer[ISmartGateInfoResponse]):
                 voltage=40,
             ),
             door2=ISmartGateDoor(
+                door_id=2,
                 enabled=False,
-                apicode=self.api_code,
+                apicode=None,
                 customimage=False,
-                door_id=3,
-                permission=True,
-                name="My Door 2",
-                gate=True,
-                status=DoorStatus.OPENED,
-                mode=DoorMode.GARAGE,
-                sensor=False,
-                camera=False,
-                events=None,
-                sensorid="",
-                temperature=NONE_INT,
-                voltage=40,
-            ),
-            door3=ISmartGateDoor(
-                enabled=False,
-                apicode=self.api_code,
-                customimage=False,
-                door_id=3,
                 permission=True,
                 name=None,
                 gate=False,
-                status=DoorStatus.UNDEFINED,
                 mode=DoorMode.GARAGE,
-                sensor=False,
+                status=DoorStatus.UNDEFINED,
+                sensorid="0",
                 camera=False,
+                temperature=None,
+                voltage=None,
+                sensor=False,
                 events=None,
-                sensorid="",
-                temperature=16.3,
-                voltage=NONE_INT,
+            ),
+            door3=ISmartGateDoor(
+                door_id=3,
+                enabled=False,
+                apicode=None,
+                customimage=False,
+                permission=True,
+                name=None,
+                gate=False,
+                mode=DoorMode.GARAGE,
+                status=DoorStatus.UNDEFINED,
+                sensorid="0",
+                camera=False,
+                temperature=None,
+                voltage=None,
+                sensor=False,
+                events=None,
             ),
             network=Network(ip="127.0.0.1"),
             wifi=Wifi(SSID="Wifi network", linkquality="80%", signal="20"),
-        )
-
-    def _get_error_corrupted_data_response(self) -> Response:
-        return self._error_response(
-            GogoGate2ApiErrorCode.CORRUPTED_DATA.value, "Error: corrupted data"
-        )
-
-    def _get_error_invalid_token_response(self) -> Response:
-        return self._error_response(
-            ISmartGateApiErrorCode.INVALID_TOKEN.value,
-            "Error: invalid token",
-        )
-
-    def _get_error_token_not_set_response(self) -> Response:
-        return self._error_response(
-            ISmartGateApiErrorCode.TOKEN_NOT_SET.value,
-            "Error: token not set",
-        )
-
-    def _get_error_absent_credentials_response(self) -> Response:
-        return self._error_response(
-            ISmartGateApiErrorCode.CREDENTIALS_NOT_SET.value,
-            "Error: login or password not set",
-        )
-
-    def _get_error_invalid_credentials_response(self) -> Response:
-        return self._error_response(
-            ISmartGateApiErrorCode.CREDENTIALS_INCORRECT.value,
-            "Error: wrong login or password",
-        )
-
-    def _get_error_invalid_option_response(self) -> Response:
-        return self._error_response(
-            ISmartGateApiErrorCode.INVALID_OPTION.value, "Error: invalid option"
-        )
-
-    def _get_error_activate_invalid_api_code_response(self) -> Response:
-        return self._error_response(
-            ISmartGateApiErrorCode.INVALID_API_CODE.value, "Error: invalid API code"
-        )
-
-    def _get_error_activate_door_id_not_set_response(self) -> Response:
-        return self._error_response(
-            ISmartGateApiErrorCode.DOOR_NOT_SET.value, "Error: door not set"
-        )
-
-    def _get_error_activate_invalid_door_response(self) -> Response:
-        return self._error_response(
-            ISmartGateApiErrorCode.INVALID_DOOR.value, "Error: invalid door"
         )
