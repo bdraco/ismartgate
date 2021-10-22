@@ -104,6 +104,11 @@ def test_gogogate2_cipher() -> None:
             MockISmartGateServer,
             ISmartGateApiErrorCode.CREDENTIALS_INCORRECT.value,
         ),
+        (
+            ISmartGateApi,
+            MockISmartGateMiniServer,
+            ISmartGateApiErrorCode.CREDENTIALS_INCORRECT.value
+        )
     ),
 )
 @pytest.mark.asyncio
@@ -122,7 +127,8 @@ async def test_api_invalid_credentials(
 
 @pytest.mark.parametrize(
     ("api_generator", "server_generator"),
-    ((GogoGate2Api, MockGogoGate2Server), (ISmartGateApi, MockISmartGateServer)),
+    ((GogoGate2Api, MockGogoGate2Server), (ISmartGateApi, MockISmartGateServer),
+     (ISmartGateApi, MockISmartGateMiniServer)),
 )
 @pytest.mark.asyncio
 @respx.mock
@@ -140,7 +146,8 @@ async def test_activate(
 
 @pytest.mark.parametrize(
     ("api_generator", "server_generator"),
-    ((GogoGate2Api, MockGogoGate2Server), (ISmartGateApi, MockISmartGateServer)),
+    ((GogoGate2Api, MockGogoGate2Server), (ISmartGateApi, MockISmartGateServer),
+     (ISmartGateApi, MockISmartGateMiniServer)),
 )
 @pytest.mark.asyncio
 @respx.mock
@@ -249,6 +256,7 @@ async def test_open_and_close_door(
     (
         (GogoGate2Api, MockGogoGate2Server, "1"),
         (ISmartGateApi, MockISmartGateServer, "yes"),
+        (ISmartGateApi, MockISmartGateMiniServer, "yes")
     ),
 )
 @pytest.mark.asyncio
@@ -278,7 +286,8 @@ async def test_remoteaccess(
 
 @pytest.mark.parametrize(
     ("api_generator", "server_generator"),
-    ((GogoGate2Api, MockGogoGate2Server), (ISmartGateApi, MockISmartGateServer)),
+    ((GogoGate2Api, MockGogoGate2Server), (ISmartGateApi, MockISmartGateServer),
+     (ISmartGateApi, MockISmartGateMiniServer)),
 )
 @pytest.mark.asyncio
 @respx.mock
@@ -304,7 +313,8 @@ async def test_sensor_temperature_and_voltage(
 
 @pytest.mark.parametrize(
     ("api_generator", "server_generator"),
-    ((GogoGate2Api, MockGogoGate2Server), (ISmartGateApi, MockISmartGateServer)),
+    ((GogoGate2Api, MockGogoGate2Server), (ISmartGateApi, MockISmartGateServer),
+     (ISmartGateApi, MockISmartGateMiniServer)),
 )
 @pytest.mark.asyncio
 @respx.mock
@@ -409,7 +419,7 @@ async def test_transitional_door_statuses(
         mock_server.set_device_status(1, DoorStatus.CLOSED)
         datetime_mock.utcnow.side_effect = (
             lambda: datetime.utcnow()
-            + AbstractGateApi.DEFAULT_TRANSITION_STATUS_TIMEOUT
+                    + AbstractGateApi.DEFAULT_TRANSITION_STATUS_TIMEOUT
         )
         info = await api.async_info()
         assert await api.async_get_door_statuses() == {
@@ -438,7 +448,7 @@ async def test_transitional_door_statuses(
 
 @pytest.mark.parametrize(
     ("api_generator", "server_generator"),
-    ((ISmartGateApi, MockISmartGateServer),),
+    ((ISmartGateApi, MockISmartGateServer), (ISmartGateApi, MockISmartGateMiniServer)),
 )
 @pytest.mark.asyncio
 @respx.mock
@@ -459,6 +469,7 @@ async def test_ismartgate_activate_invalid_door(
     (
         (GogoGate2Api, MockGogoGate2Server),
         (ISmartGateApi, MockISmartGateServer),
+        (ISmartGateApi, MockISmartGateMiniServer)
     ),
 )
 @pytest.mark.asyncio
