@@ -275,7 +275,6 @@
 
 <span class="n">AllDoorStatus</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">DoorStatus</span><span class="p">,</span> <span class="n">TransitionDoorStatus</span><span class="p">]</span>
 
-
 <span class="n">CLOSE_DOOR_STATUSES</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">(</span>
     <span class="p">(</span><span class="n">DoorStatus</span><span class="o">.</span><span class="n">CLOSED</span><span class="p">,</span> <span class="n">TransitionDoorStatus</span><span class="o">.</span><span class="n">CLOSING</span><span class="p">)</span>
 <span class="p">)</span>
@@ -559,6 +558,36 @@
     <span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="ismartgate_door_or_empty"><a class="viewcode-back" href="../../ismartgate.html#ismartgate.common.ismartgate_door_or_empty">[docs]</a><span class="k">def</span> <span class="nf">ismartgate_door_or_empty</span><span class="p">(</span><span class="n">door_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ISmartGateDoor</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Get door form xml element or return empty if door is not supported.</span>
+
+<span class="sd">    (ex: smartgate mini only supports one door)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Check for necessary element, if it does not exist then door is not supported.</span>
+    <span class="k">if</span> <span class="n">element_text_or_none</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="s2">&quot;apicode&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Return empty door</span>
+        <span class="k">return</span> <span class="n">ISmartGateDoor</span><span class="p">(</span>
+            <span class="n">door_id</span><span class="o">=</span><span class="n">door_id</span><span class="p">,</span>
+            <span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">apicode</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+            <span class="n">customimage</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">permission</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">gate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">mode</span><span class="o">=</span><span class="n">DoorMode</span><span class="o">.</span><span class="n">GARAGE</span><span class="p">,</span>
+            <span class="n">status</span><span class="o">=</span><span class="n">DoorStatus</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>
+            <span class="n">sensorid</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+            <span class="n">camera</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">voltage</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">sensor</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">events</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Return Supported Door</span>
+    <span class="k">return</span> <span class="n">ismartgate_door_or_raise</span><span class="p">(</span><span class="n">door_id</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="element_to_gogogate2_info_response"><a class="viewcode-back" href="../../ismartgate.html#ismartgate.common.element_to_gogogate2_info_response">[docs]</a><span class="k">def</span> <span class="nf">element_to_gogogate2_info_response</span><span class="p">(</span><span class="n">element</span><span class="p">:</span> <span class="n">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GogoGate2InfoResponse</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Get response from xml element.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">GogoGate2InfoResponse</span><span class="p">(</span>
@@ -597,8 +626,8 @@
         <span class="n">firmwareversion</span><span class="o">=</span><span class="n">element_text_or_raise</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="s2">&quot;firmwareversion&quot;</span><span class="p">),</span>
         <span class="n">newfirmware</span><span class="o">=</span><span class="n">element_text_or_raise</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="s2">&quot;newfirmware&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;yes&quot;</span><span class="p">,</span>
         <span class="n">door1</span><span class="o">=</span><span class="n">ismartgate_door_or_raise</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">element_or_raise</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="s2">&quot;door1&quot;</span><span class="p">)),</span>
-        <span class="n">door2</span><span class="o">=</span><span class="n">ismartgate_door_or_raise</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">element_or_raise</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="s2">&quot;door2&quot;</span><span class="p">)),</span>
-        <span class="n">door3</span><span class="o">=</span><span class="n">ismartgate_door_or_raise</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">element_or_raise</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="s2">&quot;door3&quot;</span><span class="p">)),</span>
+        <span class="n">door2</span><span class="o">=</span><span class="n">ismartgate_door_or_empty</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">element_or_raise</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="s2">&quot;door2&quot;</span><span class="p">)),</span>
+        <span class="n">door3</span><span class="o">=</span><span class="n">ismartgate_door_or_empty</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">element_or_raise</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="s2">&quot;door3&quot;</span><span class="p">)),</span>
         <span class="n">network</span><span class="o">=</span><span class="n">network_or_raise</span><span class="p">(</span><span class="n">element_or_raise</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="s2">&quot;network&quot;</span><span class="p">)),</span>
         <span class="n">wifi</span><span class="o">=</span><span class="n">wifi_or_raise</span><span class="p">(</span><span class="n">element_or_raise</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="s2">&quot;wifi&quot;</span><span class="p">)),</span>
     <span class="p">)</span></div>
