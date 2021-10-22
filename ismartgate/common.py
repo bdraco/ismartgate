@@ -492,9 +492,9 @@ def ismartgate_door_or_empty(door_id: int, element: Element) -> ISmartGateDoor:
             temperature=None,
             voltage=None
         )
-    else:
-        # Return Supported Door
-        return ismartgate_door_or_raise(door_id, element)
+
+    # Return Supported Door
+    return ismartgate_door_or_raise(door_id, element)
 
 
 def element_to_gogogate2_info_response(element: Element) -> GogoGate2InfoResponse:
