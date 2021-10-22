@@ -557,7 +557,7 @@ def element_to_ismartgate_info_response(element: Element) -> ISmartGateInfoRespo
         newfirmware=element_text_or_raise(element, "newfirmware").lower() == "yes",
         door1=ismartgate_door_or_raise(1, element_or_raise(element, "door1")),
         door2=ismartgate_door_or_empty(2, element_or_raise(element, "door2")),
-        door3=ismartgate_door_or_raise(3, element_or_raise(element, "door3")),
+        door3=ismartgate_door_or_empty(3, element_or_raise(element, "door3")),
         network=network_or_raise(element_or_raise(element, "network")),
         wifi=wifi_or_raise(element_or_raise(element, "wifi")),
     )
