@@ -483,14 +483,16 @@ def ismartgate_door_or_empty(door_id: int, element: Element) -> ISmartGateDoor:
             apicode="0",
             customimage=False,
             permission=True,
-            name="",
+            name=None,
             gate=False,
             mode=DoorMode.GARAGE,
             status=DoorStatus.UNDEFINED,
             sensorid="0",
             camera=False,
             temperature=None,
-            voltage=None
+            voltage=None,
+            sensor=False,
+            events=None
         )
 
     # Return Supported Door
