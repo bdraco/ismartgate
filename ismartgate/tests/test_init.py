@@ -24,10 +24,10 @@ from ismartgate.common import (
 )
 from ismartgate.const import GogoGate2ApiErrorCode, ISmartGateApiErrorCode
 
-from .common import MockGogoGate2Server, MockISmartGateServer
+from .common import MockGogoGate2Server, MockISmartGateServer, MockISmartGateMiniServer
 
 ApiType = Union[GogoGate2Api, ISmartGateApi]
-ServerType = Union[MockGogoGate2Server, MockISmartGateServer]
+ServerType = Union[MockGogoGate2Server, MockISmartGateServer, MockISmartGateMiniServer]
 ApiGenerator = Callable[[str, str, str], ApiType]
 ServerGenerator = Callable[..., ServerType]
 
