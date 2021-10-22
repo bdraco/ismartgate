@@ -435,3 +435,74 @@ class MockISmartGateServer(AbstractMockServer[ISmartGateInfoResponse]):
         return self._error_response(
             ISmartGateApiErrorCode.INVALID_DOOR.value, "Error: invalid door"
         )
+
+
+class MockISmartGateMiniServer(MockISmartGateServer):
+    """Test server for ISmartGate Mini"""
+
+    def _get_info_data(self) -> ISmartGateInfoResponse:
+        return ISmartGateInfoResponse(
+            pin=1234,
+            lang="en",
+            ismartgatename="Home",
+            newfirmware=False,
+            user=self.username,
+            model="iSmartGate Mini",
+            apiversion="apiversion123",
+            remoteaccessenabled=False,
+            remoteaccess="abcdefg12345.my-gogogate.com",
+            firmwareversion="761",
+            door1=ISmartGateDoor(
+                enabled=True,
+                apicode=self.api_code,
+                customimage=False,
+                door_id=1,
+                permission=True,
+                name="My Door 1",
+                gate=False,
+                status=DoorStatus.CLOSED,
+                mode=DoorMode.GARAGE,
+                sensor=True,
+                camera=False,
+                events=None,
+                sensorid="sensor123",
+                temperature=16.3,
+                voltage=40,
+            ),
+            door2=ISmartGateDoor(
+                door_id=2,
+                enabled=False,
+                apicode=None,
+                customimage=False,
+                permission=True,
+                name=None,
+                gate=False,
+                mode=DoorMode.GARAGE,
+                status=DoorStatus.UNDEFINED,
+                sensorid="0",
+                camera=False,
+                temperature=None,
+                voltage=None,
+                sensor=False,
+                events=None,
+            ),
+            door3=ISmartGateDoor(
+                door_id=3,
+                enabled=False,
+                apicode=None,
+                customimage=False,
+                permission=True,
+                name=None,
+                gate=False,
+                mode=DoorMode.GARAGE,
+                status=DoorStatus.UNDEFINED,
+                sensorid="0",
+                camera=False,
+                temperature=None,
+                voltage=None,
+                sensor=False,
+                events=None,
+            ),
+            network=Network(ip="127.0.0.1"),
+            wifi=Wifi(SSID="Wifi network", linkquality="80%", signal="20"),
+        )

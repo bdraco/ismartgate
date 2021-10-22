@@ -24,10 +24,10 @@ from ismartgate.common import (
 )
 from ismartgate.const import GogoGate2ApiErrorCode, ISmartGateApiErrorCode
 
-from .common import MockGogoGate2Server, MockISmartGateServer
+from .common import MockGogoGate2Server, MockISmartGateMiniServer, MockISmartGateServer
 
 ApiType = Union[GogoGate2Api, ISmartGateApi]
-ServerType = Union[MockGogoGate2Server, MockISmartGateServer]
+ServerType = Union[MockGogoGate2Server, MockISmartGateServer, MockISmartGateMiniServer]
 ApiGenerator = Callable[[str, str, str], ApiType]
 ServerGenerator = Callable[..., ServerType]
 
@@ -104,6 +104,11 @@ def test_gogogate2_cipher() -> None:
             MockISmartGateServer,
             ISmartGateApiErrorCode.CREDENTIALS_INCORRECT.value,
         ),
+        (
+            ISmartGateApi,
+            MockISmartGateMiniServer,
+            ISmartGateApiErrorCode.CREDENTIALS_INCORRECT.value,
+        ),
     ),
 )
 @pytest.mark.asyncio
@@ -122,7 +127,11 @@ async def test_api_invalid_credentials(
 
 @pytest.mark.parametrize(
     ("api_generator", "server_generator"),
-    ((GogoGate2Api, MockGogoGate2Server), (ISmartGateApi, MockISmartGateServer)),
+    (
+        (GogoGate2Api, MockGogoGate2Server),
+        (ISmartGateApi, MockISmartGateServer),
+        (ISmartGateApi, MockISmartGateMiniServer),
+    ),
 )
 @pytest.mark.asyncio
 @respx.mock
@@ -140,7 +149,10 @@ async def test_activate(
 
 @pytest.mark.parametrize(
     ("api_generator", "server_generator"),
-    ((GogoGate2Api, MockGogoGate2Server), (ISmartGateApi, MockISmartGateServer)),
+    (
+        (GogoGate2Api, MockGogoGate2Server),
+        (ISmartGateApi, MockISmartGateServer),
+    ),
 )
 @pytest.mark.asyncio
 @respx.mock
@@ -278,7 +290,10 @@ async def test_remoteaccess(
 
 @pytest.mark.parametrize(
     ("api_generator", "server_generator"),
-    ((GogoGate2Api, MockGogoGate2Server), (ISmartGateApi, MockISmartGateServer)),
+    (
+        (GogoGate2Api, MockGogoGate2Server),
+        (ISmartGateApi, MockISmartGateServer),
+    ),
 )
 @pytest.mark.asyncio
 @respx.mock
@@ -304,7 +319,10 @@ async def test_sensor_temperature_and_voltage(
 
 @pytest.mark.parametrize(
     ("api_generator", "server_generator"),
-    ((GogoGate2Api, MockGogoGate2Server), (ISmartGateApi, MockISmartGateServer)),
+    (
+        (GogoGate2Api, MockGogoGate2Server),
+        (ISmartGateApi, MockISmartGateServer),
+    ),
 )
 @pytest.mark.asyncio
 @respx.mock
@@ -438,7 +456,7 @@ async def test_transitional_door_statuses(
 
 @pytest.mark.parametrize(
     ("api_generator", "server_generator"),
-    ((ISmartGateApi, MockISmartGateServer),),
+    ((ISmartGateApi, MockISmartGateServer), (ISmartGateApi, MockISmartGateMiniServer)),
 )
 @pytest.mark.asyncio
 @respx.mock
@@ -459,6 +477,7 @@ async def test_ismartgate_activate_invalid_door(
     (
         (GogoGate2Api, MockGogoGate2Server),
         (ISmartGateApi, MockISmartGateServer),
+        (ISmartGateApi, MockISmartGateMiniServer),
     ),
 )
 @pytest.mark.asyncio

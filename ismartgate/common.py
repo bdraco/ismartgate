@@ -184,7 +184,6 @@ class TransitionDoorStatus(Enum):
 
 AllDoorStatus: Final = Union[DoorStatus, TransitionDoorStatus]
 
-
 CLOSE_DOOR_STATUSES: Final = frozenset(
     (DoorStatus.CLOSED, TransitionDoorStatus.CLOSING)
 )
@@ -468,6 +467,36 @@ def ismartgate_door_or_raise(door_id: int, element: Element) -> ISmartGateDoor:
     )
 
 
+def ismartgate_door_or_empty(door_id: int, element: Element) -> ISmartGateDoor:
+    """Get door form xml element or return empty if door is not supported.
+
+    (ex: smartgate mini only supports one door)
+    """
+    # Check for necessary element, if it does not exist then door is not supported.
+    if element_text_or_none(element, "apicode") is None:
+        # Return empty door
+        return ISmartGateDoor(
+            door_id=door_id,
+            enabled=False,
+            apicode="0",
+            customimage=False,
+            permission=True,
+            name=None,
+            gate=False,
+            mode=DoorMode.GARAGE,
+            status=DoorStatus.UNDEFINED,
+            sensorid="0",
+            camera=False,
+            temperature=None,
+            voltage=None,
+            sensor=False,
+            events=None,
+        )
+
+    # Return Supported Door
+    return ismartgate_door_or_raise(door_id, element)
+
+
 def element_to_gogogate2_info_response(element: Element) -> GogoGate2InfoResponse:
     """Get response from xml element."""
     return GogoGate2InfoResponse(
@@ -506,8 +535,8 @@ def element_to_ismartgate_info_response(element: Element) -> ISmartGateInfoRespo
         firmwareversion=element_text_or_raise(element, "firmwareversion"),
         newfirmware=element_text_or_raise(element, "newfirmware").lower() == "yes",
         door1=ismartgate_door_or_raise(1, element_or_raise(element, "door1")),
-        door2=ismartgate_door_or_raise(2, element_or_raise(element, "door2")),
-        door3=ismartgate_door_or_raise(3, element_or_raise(element, "door3")),
+        door2=ismartgate_door_or_empty(2, element_or_raise(element, "door2")),
+        door3=ismartgate_door_or_empty(3, element_or_raise(element, "door3")),
         network=network_or_raise(element_or_raise(element, "network")),
         wifi=wifi_or_raise(element_or_raise(element, "wifi")),
     )
