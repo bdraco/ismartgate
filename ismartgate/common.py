@@ -494,28 +494,7 @@ def ismartgate_door_or_empty(door_id: int, element: Element) -> ISmartGateDoor:
         )
     else:
         # Return Supported Door
-        return ISmartGateDoor(
-            door_id=door_id,
-            enabled=element_text_or_raise(element, "enabled").lower() == "yes",
-            apicode=element_text_or_raise(element, "apicode"),
-            customimage=element_text_or_raise(element, "customimage").lower() == "yes",
-            permission=element_text_or_raise(element, "permission").lower() == "yes",
-            name=element_text_or_none(element, "name"),
-            gate=element_text_or_raise(element, "gate").lower() == "yes",
-            mode=cast(
-                DoorMode, enum_or_raise(element_text_or_raise(element, "mode"), DoorMode)
-            ),
-            status=cast(
-                DoorStatus,
-                enum_or_raise(element_text_or_raise(element, "status"), DoorStatus),
-            ),
-            sensor=element_text_or_raise(element, "sensor").lower() == "yes",
-            sensorid=element_text_or_none(element, "sensorid"),
-            camera=element_text_or_raise(element, "camera").lower() == "yes",
-            events=int_or_none(element_text_or_none(element, "events")),
-            temperature=None if temp is None else None if temp <= NONE_INT else temp,
-            voltage=None if voltage is None else None if voltage <= NONE_INT else voltage,
-        )
+        return ismartgate_door_or_raise(door_id, element)
 
 
 def element_to_gogogate2_info_response(element: Element) -> GogoGate2InfoResponse:
