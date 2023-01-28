@@ -16,7 +16,7 @@ test_requirements = [
     "typing_extensions>=3.10.0.0",
     "respx>=0.17.0",
     "pytest-asyncio",
-    "black>=19.10b0",
+    "black>=22.12.0",
     "codecov>=2.1.4",
     "flake8>=3.8.3",
     "flake8-debugger>=3.2.1",
