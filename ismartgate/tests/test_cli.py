@@ -6,7 +6,7 @@ from enum import Enum
 from typing import Callable
 
 import pytest
-from asynctest import MagicMock, Mock, patch
+from unittest.mock import MagicMock, Mock, patch
 from click.testing import CliRunner
 from typing_extensions import Final
 

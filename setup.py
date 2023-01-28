@@ -14,7 +14,6 @@ setup_requirements = [
 
 test_requirements = [
     "typing_extensions>=3.10.0.0",
-    "asynctest>=0.13.0",
     "respx>=0.17.0",
     "pytest-asyncio",
     "black>=19.10b0",
@@ -66,9 +65,10 @@ setup(
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
     ],
     description="iSmartGate and GogoGate2 API",
     entry_points={
@@ -85,7 +85,7 @@ setup(
     keywords="ismartgate",
     name="ismartgate",
     packages=find_packages(exclude=["tests", "*.tests", "*.tests.*"]),
-    python_requires=">=3.7",
+    python_requires=">=3.8",
     setup_requires=setup_requirements,
     test_suite="ismartgate/tests",
     tests_require=test_requirements,
