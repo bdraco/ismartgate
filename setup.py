@@ -14,7 +14,6 @@ setup_requirements = [
 
 test_requirements = [
     "typing_extensions>=3.10.0.0",
-    "asynctest>=0.13.0",
     "respx>=0.17.0",
     "pytest-asyncio",
     "black>=19.10b0",
