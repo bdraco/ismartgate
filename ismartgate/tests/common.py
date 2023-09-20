@@ -130,7 +130,6 @@ class AbstractMockServer(Generic[MockInfoResponse], abc.ABC):
 
         # Maybe validate token.
         if isinstance(self.cipher, ISmartGateApiCipher):
-
             if b"token" not in query:
                 return self._get_error_token_not_set_response()
 
