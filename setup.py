@@ -93,6 +93,6 @@ setup(
     url="https://github.com/bdraco/ismartgate",
     # Do not edit this string manually, always use bumpversion
     # Details in CONTRIBUTING.rst
-    version="5.0.0",
+    version="5.0.1",
     zip_safe=False,
 )
