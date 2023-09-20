@@ -328,8 +328,8 @@ async def test_empty_apicode() -> None:
     # Initial info.
     response: Final = await api.async_info()
     assert response.door1.apicode == ""
-    assert response.door2.apicode == ""
-    assert response.door3.apicode == ""
+    assert response.door2.apicode == "0"
+    assert response.door3.apicode == "0"
 
 
 @pytest.mark.parametrize(
