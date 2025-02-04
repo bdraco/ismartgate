@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=75.8.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ismartgate"
+# Do not edit this string manually, always use bumpversion
+# Details in CONTRIBUTING.rst
+version = "5.0.1"
+license = { text = "MIT" }
+description = "iSmartGate and GogoGate2 API"
+authors = [
+    { name = "Robbie Van Gorkom" },
+    { name = "J. Nick Koston", email = "nick@koston.org" },
+]
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = ["ismartgate"]
+classifiers=[
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+dynamic = ["dependencies", "optional-dependencies"]
+
+[project.urls]
+"Homepage" = "https://github.com/bdraco/ismartgate"
+
+[project.scripts]
+ismartgate = "ismartgate.cli:ismartgate_cli"
+gogogate2 = "ismartgate.cli:gogogate2_cli"
+
+[tool.setuptools.packages.find]
+include = ["ismartgate*"]
+exclude = ["*.tests*"]
