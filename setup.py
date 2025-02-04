@@ -2,10 +2,7 @@
 
 """The setup script."""
 
-from setuptools import find_packages, setup
-
-with open("README.md") as readme_file:
-    readme = readme_file.read()
+from setuptools import setup
 
 setup_requirements = [
     "pytest-runner>=5.2",
@@ -57,41 +54,6 @@ extra_requirements = {
 }
 
 setup(
-    author="Robbie Van Gorkom; J. Nick Koston",
-    author_email="nick@koston.org",
-    classifiers=[
-        "Development Status :: 2 - Pre-Alpha",
-        "Intended Audience :: Developers",
-        "License :: OSI Approved :: MIT License",
-        "Natural Language :: English",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3.10",
-        "Programming Language :: Python :: 3.11",
-    ],
-    description="iSmartGate and GogoGate2 API",
-    entry_points={
-        "console_scripts": [
-            "ismartgate=ismartgate.cli:ismartgate_cli",
-            "gogogate2=ismartgate.cli:gogogate2_cli",
-        ],
-    },
     install_requires=requirements,
-    license="MIT license",
-    long_description=readme,
-    long_description_content_type="text/markdown",
-    include_package_data=True,
-    keywords="ismartgate",
-    name="ismartgate",
-    packages=find_packages(exclude=["tests", "*.tests", "*.tests.*"]),
-    python_requires=">=3.8",
-    setup_requires=setup_requirements,
-    test_suite="ismartgate/tests",
-    tests_require=test_requirements,
     extras_require=extra_requirements,
-    url="https://github.com/bdraco/ismartgate",
-    # Do not edit this string manually, always use bumpversion
-    # Details in CONTRIBUTING.rst
-    version="5.0.1",
-    zip_safe=False,
 )
