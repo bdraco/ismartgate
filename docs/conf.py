@@ -39,7 +39,6 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.napoleon",
     "sphinx.ext.mathjax",
-    "m2r2",
 ]
 
 # Control napoleon
