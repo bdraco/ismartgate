@@ -1,4 +1,6 @@
 """Base package for gate API code."""
+
+from __future__ import annotations
 import abc
 import base64
 import json
@@ -6,14 +8,14 @@ import secrets
 import uuid
 from datetime import datetime, timedelta
 from hashlib import sha1
-from typing import Dict, Generic, Optional, TypeVar, Union, cast
+from typing import Generic, TypeVar, Union, cast
 from xml.etree.ElementTree import Element  # nosec
 
 from Crypto.Cipher import AES  # nosec
 from Crypto.Cipher._mode_cbc import CbcMode  # nosec
 from defusedxml import ElementTree
 from httpx import AsyncClient, RemoteProtocolError, Response
-from typing_extensions import Final
+from typing import Final
 
 from .common import (
     CLOSE_DOOR_STATUSES,
@@ -65,7 +67,7 @@ class ApiCipher:
         self._key: Final = key
         self._key_bytes: Final = key.encode("utf-8")
 
-    def encrypt(self, content: str, init_vector: Optional[str] = None) -> str:
+    def encrypt(self, content: str, init_vector: str | None = None) -> str:
         """Encrypt content."""
         init_vector_bytes: Final = ApiCipher.pad_pkcs5(
             init_vector or uuid.uuid4().hex
@@ -171,7 +173,7 @@ class AbstractGateApi(
         api_cipher: ApiCipherType,
         request_timeout: timedelta = DEFAULT_REQUEST_TIMEOUT,
         transition_status_timeout: timedelta = DEFAULT_TRANSITION_STATUS_TIMEOUT,
-        httpx_async_client: Optional[AsyncClient] = None,
+        httpx_async_client: AsyncClient | None = None,
     ) -> None:
         """Initialize the object."""
         self._host: Final = host
@@ -181,7 +183,7 @@ class AbstractGateApi(
         self._request_timeout: Final = request_timeout
         self._transition_status_timeout: Final = transition_status_timeout
         self._api_url: Final = AbstractGateApi.API_URL_TEMPLATE % host
-        self._transition_door_status: Final[Dict[int, CachedTransitionDoorStatus]] = {}
+        self._transition_door_status: Final[dict[int, CachedTransitionDoorStatus]] = {}
         self._httpx_async_client: Final = httpx_async_client
 
     @property
@@ -207,8 +209,8 @@ class AbstractGateApi(
     async def _async_request(
         self,
         option: RequestOption,
-        arg1: Optional[str] = None,
-        arg2: Optional[str] = None,
+        arg1: str | None = None,
+        arg2: str | None = None,
     ) -> Element:
         command_str: Final = json.dumps(
             (
@@ -246,7 +248,7 @@ class AbstractGateApi(
         return cast(Element, root_element)
 
     async def _async_get_with_retry_on_protocol_error(
-        self, params: Dict[str, str]
+        self, params: dict[str, str]
     ) -> Response:
         """Request the api url, and retry if the server disconnects on the first try."""
         client = self._httpx_async_client or AsyncClient()
@@ -280,11 +282,11 @@ class AbstractGateApi(
 
     @staticmethod
     @abc.abstractmethod
-    def _get_exception_map() -> Dict[int, ExceptionGenerator]:
+    def _get_exception_map() -> dict[int, ExceptionGenerator]:
         """Return a more specific exception."""
 
     # pylint: disable=no-self-use
-    def _get_extra_url_params(self) -> Dict[str, str]:
+    def _get_extra_url_params(self) -> dict[str, str]:
         return {}
 
     async def _async_info(self) -> Element:
@@ -292,7 +294,7 @@ class AbstractGateApi(
         return await self._async_request(RequestOption.INFO)
 
     async def _async_activate(
-        self, door_id: int, info: Optional[InfoResponseType] = None
+        self, door_id: int, info: InfoResponseType | None = None
     ) -> Element:
         """Send a command to open/close/stop the door.
 
@@ -379,7 +381,7 @@ class AbstractGateApi(
 
     def _get_door_statuses(
         self, info: InfoResponseType, use_transitional_status: bool = True
-    ) -> Dict[int, AllDoorStatus]:
+    ) -> dict[int, AllDoorStatus]:
         doors: Final = get_configured_doors(info)
 
         # Clean out the cache.
@@ -394,7 +396,7 @@ class AbstractGateApi(
                 del self._transition_door_status[cached_door_id]
 
         # For each door, determine the status.
-        result: Final[Dict[int, AllDoorStatus]] = {}
+        result: Final[dict[int, AllDoorStatus]] = {}
         for door in doors:
             transitional_status = self._transition_door_status.get(door.door_id)
             if (
@@ -410,7 +412,7 @@ class AbstractGateApi(
 
     async def async_get_door_statuses(
         self, use_transitional_status: bool = True
-    ) -> Dict[int, AllDoorStatus]:
+    ) -> dict[int, AllDoorStatus]:
         """Get configured door statuses."""
         return self._get_door_statuses(
             await self.async_info(), use_transitional_status=use_transitional_status
@@ -418,7 +420,7 @@ class AbstractGateApi(
 
     def async_get_door_statuses_from_info(
         self, info: InfoResponseType, use_transitional_status: bool = True
-    ) -> Dict[int, AllDoorStatus]:
+    ) -> dict[int, AllDoorStatus]:
         """Get configured door statuses from an existing info response."""
         return self._get_door_statuses(
             info, use_transitional_status=use_transitional_status
@@ -439,7 +441,7 @@ class ISmartGateApi(
         password: str,
         request_timeout: timedelta = AbstractGateApi.DEFAULT_REQUEST_TIMEOUT,
         transition_status_timeout: timedelta = AbstractGateApi.DEFAULT_TRANSITION_STATUS_TIMEOUT,
-        httpx_async_client: Optional[AsyncClient] = None,
+        httpx_async_client: AsyncClient | None = None,
     ) -> None:
         """Initialize the object."""
         super().__init__(
@@ -477,7 +479,7 @@ class ISmartGateApi(
         return cast(ISmartGateDoor, door).apicode
 
     @staticmethod
-    def _get_exception_map() -> Dict[int, ExceptionGenerator]:
+    def _get_exception_map() -> dict[int, ExceptionGenerator]:
         """Return a more specific exception."""
         return {
             ISmartGateApiErrorCode.CREDENTIALS_NOT_SET.value: CredentialsNotSetException,
@@ -487,7 +489,7 @@ class ISmartGateApi(
             ISmartGateApiErrorCode.DOOR_NOT_SET.value: DoorNotSetException,
         }
 
-    def _get_extra_url_params(self) -> Dict[str, str]:
+    def _get_extra_url_params(self) -> dict[str, str]:
         """Get extra url params when making calls."""
         return {
             "t": str(secrets.randbelow(100000000) + 1),
@@ -509,7 +511,7 @@ class GogoGate2Api(
         password: str,
         request_timeout: timedelta = AbstractGateApi.DEFAULT_REQUEST_TIMEOUT,
         transition_status_timeout: timedelta = AbstractGateApi.DEFAULT_TRANSITION_STATUS_TIMEOUT,
-        httpx_async_client: Optional[AsyncClient] = None,
+        httpx_async_client: AsyncClient | None = None,
     ) -> None:
         """Initialize the object."""
         super().__init__(
@@ -538,7 +540,7 @@ class GogoGate2Api(
         )
 
     @staticmethod
-    def _get_exception_map() -> Dict[int, ExceptionGenerator]:
+    def _get_exception_map() -> dict[int, ExceptionGenerator]:
         """Return a more specific exception."""
         return {
             GogoGate2ApiErrorCode.CREDENTIALS_NOT_SET.value: CredentialsNotSetException,

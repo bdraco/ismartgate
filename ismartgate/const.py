@@ -1,7 +1,10 @@
 """Constants for gate devices"""
+
+from __future__ import annotations
+
 from enum import IntEnum
 
-from typing_extensions import Final
+from typing import Final
 
 
 class GogoGate2ApiErrorCode(IntEnum):
