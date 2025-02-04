@@ -1,13 +1,17 @@
 """Common code for gate APIs."""
+
+from __future__ import annotations
+
 import dataclasses
 import json
 from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
-from typing import Any, Callable, Optional, Tuple, Type, TypeVar, Union, cast
+from typing import Any, TypeVar, Union, cast
+from collections.abc import Callable
 from xml.etree.ElementTree import Element  # nosec
 
-from typing_extensions import Final
+from typing import Final
 
 from .const import NONE_INT
 
@@ -49,7 +53,7 @@ class TextEmptyException(TagException):
 class UnexpectedTypeException(Exception):
     """Thrown when encountering an unexpected type."""
 
-    def __init__(self, value: Any, expected: Type[GenericType]):
+    def __init__(self, value: Any, expected: type[GenericType]):
         """Initialize."""
         super().__init__(
             f'Expected of "{value}" to be "{expected}" but was "{type(value)}."'
@@ -58,7 +62,7 @@ class UnexpectedTypeException(Exception):
         self.expected: Final = expected
 
 
-def enforce_type(value: Any, expected: Type[GenericType]) -> GenericType:
+def enforce_type(value: Any, expected: type[GenericType]) -> GenericType:
     """Enforce a data type."""
     if not isinstance(value, expected):
         raise UnexpectedTypeException(value, expected)
@@ -68,7 +72,7 @@ def enforce_type(value: Any, expected: Type[GenericType]) -> GenericType:
 
 def value_or_none(
     value: Any, convert_fn: Callable[[Any], GenericType]
-) -> Union[GenericType, None]:
+) -> GenericType | None:
     """Convert a value given a specific conversion function."""
     if value is None:
         return None
@@ -79,7 +83,7 @@ def value_or_none(
         return None
 
 
-def enum_or_raise(value: Optional[Union[str, int]], enum: Type[Enum]) -> Enum:
+def enum_or_raise(value: str | int | None, enum: type[Enum]) -> Enum:
     """Return Enum or raise exception."""
     if value is None:
         raise UnexpectedTypeException(value, enum)
@@ -92,7 +96,7 @@ def str_or_raise(value: Any) -> str:
     return enforce_type(str_or_none(value), str)
 
 
-def str_or_none(value: Any) -> Optional[str]:
+def str_or_none(value: Any) -> str | None:
     """Return str or None."""
     return value_or_none(value, str)
 
@@ -102,12 +106,12 @@ def int_or_raise(value: Any) -> int:
     return enforce_type(int_or_none(value), int)
 
 
-def int_or_none(value: Any) -> Optional[int]:
+def int_or_none(value: Any) -> int | None:
     """Return int or None."""
     return value_or_none(value, int)
 
 
-def float_or_none(value: Any) -> Optional[float]:
+def float_or_none(value: Any) -> float | None:
     """Return float or None."""
     return value_or_none(value, float)
 
@@ -212,16 +216,16 @@ class AbstractDoor:
 
     door_id: int
     permission: bool
-    name: Optional[str]
+    name: str | None
     mode: DoorMode
     gate: bool
     status: DoorStatus
     sensor: bool
     camera: bool
-    events: Optional[int]
-    sensorid: Optional[str]
-    temperature: Optional[float]
-    voltage: Optional[int]
+    events: int | None
+    sensorid: str | None
+    temperature: float | None
+    voltage: int | None
 
 
 @dataclass(frozen=True)
@@ -258,9 +262,9 @@ class Network:
 class Wifi:
     """Wifi object."""
 
-    SSID: Optional[str]  # pylint: disable=invalid-name
-    linkquality: Optional[str]
-    signal: Optional[str]
+    SSID: str | None  # pylint: disable=invalid-name
+    linkquality: str | None
+    signal: str | None
 
 
 @dataclass(frozen=True)
@@ -337,12 +341,12 @@ class CachedTransitionDoorStatus:
     target_status: DoorStatus
 
 
-def element_or_none(element: Optional[Element], tag: str) -> Optional[Element]:
+def element_or_none(element: Element | None, tag: str) -> Element | None:
     """Get element from xml element."""
     return None if element is None else element.find(tag)
 
 
-def element_or_raise(element: Optional[Element], tag: str) -> Element:
+def element_or_raise(element: Element | None, tag: str) -> Element:
     """Get element from xml element."""
     found_element: Final = element_or_none(element, tag)
     if found_element is None:
@@ -351,12 +355,12 @@ def element_or_raise(element: Optional[Element], tag: str) -> Element:
     return found_element
 
 
-def element_text_or_empty(element: Optional[Element], tag: str) -> str:
+def element_text_or_empty(element: Element | None, tag: str) -> str:
     """Get element value as text or an empty string."""
     return element_text_or_default(element, tag, "")
 
 
-def element_text_or_default(element: Optional[Element], tag: str, default: str) -> str:
+def element_text_or_default(element: Element | None, tag: str, default: str) -> str:
     """Get element value as text or a default value."""
     val: Final = element_text_or_none(element, tag)
     if val is None:
@@ -365,7 +369,7 @@ def element_text_or_default(element: Optional[Element], tag: str, default: str) 
     return cast(str, val)
 
 
-def element_text_or_none(element: Optional[Element], tag: str) -> Optional[str]:
+def element_text_or_none(element: Element | None, tag: str) -> str | None:
     """Get element text from xml element."""
     found_element: Final = element_or_none(element, tag)
     return (
@@ -377,7 +381,7 @@ def element_text_or_none(element: Optional[Element], tag: str) -> Optional[str]:
     )
 
 
-def element_text_or_raise(element: Optional[Element], tag: str) -> str:
+def element_text_or_raise(element: Element | None, tag: str) -> str:
     """Get element text from xml element."""
     found_element: Final = element_or_raise(element, tag)
     if found_element.text is None:
@@ -386,7 +390,7 @@ def element_text_or_raise(element: Optional[Element], tag: str) -> str:
     return found_element.text.strip()
 
 
-def element_int_or_raise(element: Optional[Element], tag: str) -> int:
+def element_int_or_raise(element: Element | None, tag: str) -> int:
     """Get element int from xml element."""
     found_element: Final = element_or_raise(element, tag)
     if found_element.text is None:
@@ -574,23 +578,21 @@ def element_to_ismartgate_activate_response(
     )
 
 
-def get_door_by_id(
-    door_id: int, response: AbstractInfoResponse
-) -> Optional[AbstractDoor]:
+def get_door_by_id(door_id: int, response: AbstractInfoResponse) -> AbstractDoor | None:
     """Get a door from a gogogate2 response."""
     return next(
         iter([door for door in get_doors(response) if door.door_id == door_id]), None
     )
 
 
-def get_doors(response: AbstractInfoResponse) -> Tuple[AbstractDoor, ...]:
+def get_doors(response: AbstractInfoResponse) -> tuple[AbstractDoor, ...]:
     """Get a tuple of doors from a response."""
     return (response.door1, response.door2, response.door3)
 
 
 def get_configured_door_by_id(
     door_id: int, response: AbstractInfoResponse
-) -> Optional[AbstractDoor]:
+) -> AbstractDoor | None:
     """Get a door from a gogogate2 response."""
     return next(
         iter(
@@ -600,6 +602,6 @@ def get_configured_door_by_id(
     )
 
 
-def get_configured_doors(response: AbstractInfoResponse) -> Tuple[AbstractDoor, ...]:
+def get_configured_doors(response: AbstractInfoResponse) -> tuple[AbstractDoor, ...]:
     """Get a tuple of configured doors from a response."""
     return tuple(door for door in get_doors(response) if door.name)

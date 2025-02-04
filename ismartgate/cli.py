@@ -1,14 +1,18 @@
 """CLI for gate devices."""
+
+from __future__ import annotations
+
 import asyncio
 import json
 import pprint
 from enum import Enum, unique
 from functools import wraps
 from getpass import getpass
-from typing import Any, Callable, Union, cast
+from typing import Any, cast
+from collections.abc import Callable
 
 import click
-from typing_extensions import Final
+from typing import Final
 
 from . import AbstractGateApi, GogoGate2Api, ISmartGateApi
 from .common import EnhancedJSONEncoder
@@ -101,7 +105,7 @@ def cli(
     device_type: str,
 ) -> None:
     """Interact with the device API."""
-    api_generator: Callable[[str, str, str], Union[GogoGate2Api, ISmartGateApi]]
+    api_generator: Callable[[str, str, str], GogoGate2Api | ISmartGateApi]
 
     if device_type == DeviceType.GOGOGATE2.value:
         api_generator = GogoGate2Api
