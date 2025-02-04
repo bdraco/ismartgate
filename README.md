@@ -1,7 +1,7 @@
 # ismartgate
 
 [![Build Status](https://github.com/bdraco/ismartgate/workflows/Build%20Main/badge.svg)](https://github.com/bdraco/ismartgate/actions)
-[![Documentation](https://github.com/bdraco/ismartgate/workflows/Documentation/badge.svg)](https://bdraco.github.io/ismartgate/)
+[![Documentation](https://img.shields.io/readthedocs/ismartgate.svg?logo=read-the-docs&logoColor=fff&style=flat-square)](https://ismartgate.readthedocs.org/)
 [![Code Coverage](https://codecov.io/gh/bdraco/ismartgate/branch/main/graph/badge.svg)](https://codecov.io/gh/bdraco/ismartgate)
 
 iSmartGate and GogoGate2 API
