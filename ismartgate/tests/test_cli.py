@@ -1,14 +1,17 @@
 """CLI for GogoGate2 and iSmartGate devices."""
+
+from __future__ import annotations
+
 import json
 import sys
 from dataclasses import dataclass
 from enum import Enum
-from typing import Callable
+from collections.abc import Callable
 
 import pytest
 from unittest.mock import MagicMock, Mock, patch
 from click.testing import CliRunner
-from typing_extensions import Final
+from typing import Final
 
 import ismartgate.cli as cli_module
 from ismartgate import GogoGate2Api, ISmartGateApi

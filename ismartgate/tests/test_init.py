@@ -1,12 +1,16 @@
 """Tets for main API."""
+
+from __future__ import annotations
+
 from datetime import datetime
-from typing import Callable, Union
+from typing import Union
+from collections.abc import Callable
 from unittest.mock import patch
 
 import httpx
 import pytest
 import respx
-from typing_extensions import Final
+from typing import Final
 
 from ismartgate import (
     AbstractGateApi,

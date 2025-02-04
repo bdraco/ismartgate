@@ -1,7 +1,10 @@
 """Tests for common code."""
+
+from __future__ import annotations
+
 import pytest
 from defusedxml import ElementTree
-from typing_extensions import Final
+from typing import Final
 
 from ismartgate.common import (
     DoorMode,
@@ -45,7 +48,7 @@ def test_element_exceptions() -> None:
     with pytest.raises(UnexpectedTypeException) as exinfo3:
         int_or_raise(element_text_or_raise(root_element, "tag2"))
         assert exinfo3.value.value == "value"
-        assert exinfo3.value.expected == int
+        assert exinfo3.value.expected is int
 
 
 def test_str_or_raise() -> None:
@@ -53,7 +56,7 @@ def test_str_or_raise() -> None:
     with pytest.raises(UnexpectedTypeException) as exinfo:
         str_or_raise(None)
         assert exinfo.value.value is None
-        assert exinfo.value.expected == str
+        assert exinfo.value.expected is str
 
     assert str_or_raise(123) == "123"
 

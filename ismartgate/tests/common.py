@@ -1,14 +1,17 @@
 """Common test code."""
+
+from __future__ import annotations
+
 import abc
 import json
-from typing import Any, Generic, Optional, TypeVar, Union
+from typing import Any, Generic, TypeVar, Union
 from urllib.parse import parse_qs
 from xml.dom.minidom import parseString
 
 import dicttoxml
 import respx
 from httpx import Request, Response
-from typing_extensions import Final
+from typing import Final
 
 from ismartgate import AbstractGateApi, ISmartGateApiCipher
 from ismartgate.common import (
@@ -38,9 +41,9 @@ class AbstractMockServer(Generic[MockInfoResponse], abc.ABC):
         self,
         api: AbstractGateApi,
         api_code: str = "api_code1",
-        host: Optional[str] = None,
-        username: Optional[str] = None,
-        password: Optional[str] = None,
+        host: str | None = None,
+        username: str | None = None,
+        password: str | None = None,
     ):
         """Init object."""
         self.host: Final = host or api.host
