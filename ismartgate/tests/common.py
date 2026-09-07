@@ -4,14 +4,13 @@ from __future__ import annotations
 
 import abc
 import json
-from typing import Any, Generic, TypeVar, Union
+from typing import Any, Final, Generic, TypeVar, Union
 from urllib.parse import parse_qs
 from xml.dom.minidom import parseString
 
 import dicttoxml
 import respx
 from httpx import Request, Response
-from typing import Final
 
 from ismartgate import AbstractGateApi, ISmartGateApiCipher
 from ismartgate.common import (
