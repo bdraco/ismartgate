@@ -2,15 +2,14 @@
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
 from collections.abc import Callable
+from datetime import datetime
+from typing import Final, Union
 from unittest.mock import patch
 
 import httpx
 import pytest
 import respx
-from typing import Final
 
 from ismartgate import (
     AbstractGateApi,
@@ -444,9 +443,8 @@ async def test_transitional_door_statuses(
         mock_server.set_device_status(1, DoorStatus.CLOSED)
         await api.async_open_door(1)
         mock_server.set_device_status(1, DoorStatus.CLOSED)
-        datetime_mock.utcnow.side_effect = (
-            lambda: datetime.utcnow()
-            + AbstractGateApi.DEFAULT_TRANSITION_STATUS_TIMEOUT
+        datetime_mock.utcnow.side_effect = lambda: (
+            datetime.utcnow() + AbstractGateApi.DEFAULT_TRANSITION_STATUS_TIMEOUT
         )
         info = await api.async_info()
         assert await api.async_get_door_statuses() == {

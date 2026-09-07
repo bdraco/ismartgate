@@ -4,14 +4,14 @@ from __future__ import annotations
 
 import json
 import sys
+from collections.abc import Callable
 from dataclasses import dataclass
 from enum import Enum
-from collections.abc import Callable
+from typing import Final
+from unittest.mock import MagicMock, Mock, patch
 
 import pytest
-from unittest.mock import MagicMock, Mock, patch
 from click.testing import CliRunner
-from typing import Final
 
 import ismartgate.cli as cli_module
 from ismartgate import GogoGate2Api, ISmartGateApi
