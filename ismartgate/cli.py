@@ -5,14 +5,13 @@ from __future__ import annotations
 import asyncio
 import json
 import pprint
+from collections.abc import Callable
 from enum import Enum, unique
 from functools import wraps
 from getpass import getpass
-from typing import Any, cast
-from collections.abc import Callable
+from typing import Any, Final, cast
 
 import click
-from typing import Final
 
 from . import AbstractGateApi, GogoGate2Api, ISmartGateApi
 from .common import EnhancedJSONEncoder
