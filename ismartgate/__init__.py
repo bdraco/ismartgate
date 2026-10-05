@@ -1,6 +1,7 @@
 """Base package for gate API code."""
 
 from __future__ import annotations
+
 import abc
 import base64
 import json
@@ -8,14 +9,13 @@ import secrets
 import uuid
 from datetime import datetime, timedelta
 from hashlib import sha1
-from typing import Generic, TypeVar, Union, cast
+from typing import Final, Generic, TypeVar, Union, cast
 from xml.etree.ElementTree import Element  # nosec
 
 from Crypto.Cipher import AES  # nosec
 from Crypto.Cipher._mode_cbc import CbcMode  # nosec
 from defusedxml import ElementTree
 from httpx import AsyncClient, RemoteProtocolError, Response
-from typing import Final
 
 from .common import (
     CLOSE_DOOR_STATUSES,
