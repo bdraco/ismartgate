@@ -4,14 +4,12 @@ from __future__ import annotations
 
 import dataclasses
 import json
+from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
-from typing import Any, TypeVar, Union, cast
-from collections.abc import Callable
+from typing import Any, Final, TypeVar, Union, cast
 from xml.etree.ElementTree import Element  # nosec
-
-from typing import Final
 
 from .const import NONE_INT
 
