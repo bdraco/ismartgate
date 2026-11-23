@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+from typing import Final
+
 import pytest
 from defusedxml import ElementTree
-from typing import Final
 
 from ismartgate.common import (
     DoorMode,
